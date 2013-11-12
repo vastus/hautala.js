@@ -25,6 +25,10 @@ Lisäksi se hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
   * `type.checkOptional` toimii kuten `check`, mutta tarkistaa vain annettujen arvojen tyypit.
   * `type.validation` ja `type.validationOptional` kuten `check`, mutta ei palauta mitään, mutta heittää TypeError-olion.
 
+## Testit [typeUtilsTest.js](./typeUtilsTest.js)
+
+Muutama testi, jotka demonstroivat kirjaston toimintaa.
+
 ## Pohdintaa
 
 Kokonaislukujen tarkistaminen on vähän turhaa, sillä JavaScript ei sellaisia kuitenkaan osaa hyödyntää.
@@ -37,5 +41,6 @@ arvoilla. <sup>[[lähde]](http://blog.chromium.org/2010/12/new-crankshaft-for-v8
 Hyviin tapoihin kuuluu tarkistaa, että funktioon annetut parametrit on oikean tyyppisiä ja kertoa funktion kutsujalle,
 mikäli näin ei ole. Varsinkin, jos parametrien tyypit eivät käy selkeästi ilmi funktion nimestä.
 
-
-
+Liiallinen tyyppien tarkistelu voi johtaa koodirivien määrän turhaan kasvuun, jos aina pitää pelata varman päälle.
+Ajan voisi käyttää ehkä ennemmin hyvään dokumentaatioon funktioista, siten käyttäjä tietää miten niitä käytetään, eikä
+saa vain virheilmoituksia naamalle, kun yrittää jotain.
