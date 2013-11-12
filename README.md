@@ -5,7 +5,7 @@ TKTL:n kurssin Ohjelmointitekniikka (JavaScript) laskuharjoitusryhmä Hautala.
 ## Jäsenet
 
 * Juho Hautala
-* Ville Lahdenvuo
+* [Ville Lahdenvuo](http://tuhoojabotti.com)
 * Lalli Nuorteva
 * Olavi Lintumäki
 
