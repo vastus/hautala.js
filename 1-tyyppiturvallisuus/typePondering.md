@@ -58,3 +58,4 @@ Olisi ehkä voinut lisätä myös funktion objektin sisältämien arvojen tyyppi
 Linkkejä:
   * https://github.com/jrdavis/match
   * https://developers.google.com/closure/compiler/docs/js-for-compiler
+  * http://www.typescriptlang.org/Tutorial/
