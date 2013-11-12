@@ -27,7 +27,7 @@ Lisäksi se hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
 
 ## Testit [typeUtilsTest.js](./typeUtilsTest.js)
 
-Muutama testi, jotka demonstroivat kirjaston toimintaa.
+Muutama testi, jotka demonstroivat kirjaston toimintaa. [jsFiddle-demo](http://jsfiddle.net/yJ5W7/embedded/result/)
 
 ## Pohdintaa
 
