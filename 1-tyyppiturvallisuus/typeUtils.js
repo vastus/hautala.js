@@ -10,7 +10,7 @@ var type = (function () {
 		return (type === 'undefined' && obj === undefined) ||
 			(type === 'null' && obj === null) ||
 			// Special check to disallow NaN as a Number.
-			(type === 'Number' && !isNaN(parseFloat(obj)) && isFinite(obj)) ||
+			(type === 'Number' && className === 'Number' && !isNaN(obj)) ||
 			// Detect separately.
 			(type === 'NaN' && className === 'Number' && isNaN(obj)) ||
 			// Check anything other than a number by it's class name.
@@ -42,6 +42,9 @@ var type = (function () {
 		for (var i = 0; i < length; i++) {
 			type = args[i];
 
+			if (types[i] === 'Any') {
+				continue;
+			}
 			// The input is a list of possible types e.g. Number|String
 			options = types[i].split('|');
 
@@ -78,6 +81,18 @@ var type = (function () {
 		return true;
 	}
 
+	function expect(type, obj) {
+		validation(false, arguments, 'String', 'Any');
+		var actual;
+
+		if (!is(type, obj)) {
+			actual = Object.prototype.toString.call(obj).slice(8, -1);
+			throw new TypeError('Expected ' + type + ' got "' + obj + '" (' + actual + ')');
+		} else {
+			return obj;
+		}
+	}
+
 	// Generated helpers isNumber(x), isString(x), etc.
 	['Arguments', 'Array', 'Boolean', 'Date', 'Error', 'Function',
 	'JSON', 'Math', 'Number', 'Object', 'RegExp', 'String', 'NaN'
@@ -86,6 +101,7 @@ var type = (function () {
 	});
 
 	utils.is = is;
+	utils.expect = expect;
 	utils.isArrayOf = arrayOf;
 
 	utils.check = check.bind(null, false);
