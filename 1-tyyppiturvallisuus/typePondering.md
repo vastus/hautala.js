@@ -50,3 +50,10 @@ suhteellisen pieni, niin tuskin on tarvetta kauheasti varmistella koodia. Mutta 
 moduulin esimerkiksi Nodelle ja julkaisee sen npm:ssä, niin olisi hyvä julkisiin funktioihin laittaa ehkä
 tyyppitarkistukset. Projektin koon kasvaessa ei ehkä enää voi muistaa jokaisen funktion tyyppitarpeita, joten
 voi olla parempi kirjoitella tyyppitarkistuksia, mutta parempi on ehkä aloittaa dokumentoinnilla.
+
+## Muuta
+
+Olisi ehkä voinut lisätä myös funktion objektin sisältämien arvojen tyyppien tarkistamiseen.
+
+Linkkejä:
+  * https://github.com/jrdavis/match
