@@ -7,5 +7,6 @@ TKTL:n kurssin Ohjelmointitekniikka (JavaScript) laskuharjoitusryhmä Hautala.
 * Juho Hautala
 * Ville Lahdenvuo
 * Lalli Nuorteva
-* Olavi Lintumäki 
+* Olavi Lintumäki
 
+## Viikko 1: [tyyppiturvallisuuden tavoittelua](./1-tyyppiturvallisuus/typePondering.md)
