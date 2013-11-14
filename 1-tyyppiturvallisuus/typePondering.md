@@ -1,6 +1,7 @@
 Tyyppipohdintaa
 ===============
 
+Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 ## Johdanto
 
 Kirjastomme palauttaa kokoelman työkaluja tyyppien hyödyntämiseen käyttäen hyväksi kurssillakin demottua
