@@ -29,9 +29,9 @@ Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välin
     * Hyödyllisin parametrien validointiin: `type.check(arguments, 'String', 'RegExp')`
   * `type.checkOptional` toimii kuten `check`, mutta tarkistaa vain annettujen arvojen tyypit.
 
-## Testit [typeUtilsTest.js](./typeUtilsTest.js)
+## Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)
 
-Muutama testi, jotka demonstroivat kirjaston toimintaa. [jsFiddle-demo](http://jsfiddle.net/yJ5W7/embedded/result/)
+Muutama testi, jotka demonstroivat kirjaston toimintaa. Suoritus: `npm install && npm test`.
 
 ## Pohdintaa
 
