@@ -36,7 +36,8 @@ var type = (function (onException) {
 			args = params;
 		} else {
 			// Return arguments if parameters were optional.
-			return (optional || types.length === 0) ? args : handleException('[check] No arguments given, not optional.');
+			return (optional || types.length === 0) ? args :
+				handleException('[check] No arguments given, not optional.');
 		}
 
 		// If we allow optional parameters, just check the given ones.
@@ -89,7 +90,8 @@ var type = (function (onException) {
 
 		if (!is(type, obj)) {
 			actual = Object.prototype.toString.call(obj).slice(8, -1);
-			return handleException('[expect] Expected ' + type + ' got "' + obj + '" (' + actual + ')');
+			return handleException('[expect] Expected ' + type + ' got "' + obj +
+				'" (' + actual + ')');
 		} else {
 			return obj;
 		}
