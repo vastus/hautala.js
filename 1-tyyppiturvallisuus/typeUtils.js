@@ -1,7 +1,15 @@
-var type = (function () {
+var type = (function (onException) {
 	"use strict";
 
-	var utils = {};
+	var handleException, utils = {};
+
+	if (is('Function', onException)) {
+		// If we were given an exception handler, just return what it returns.
+		handleException = function (msg) { return onException(new TypeError(msg)); };
+	} else {
+		// Or just throw the error and return undefined.
+		handleException = function (msg) { throw new TypeError(msg); };
+	}
 
 	// Check for the class/type of an object.
 	function is(type, obj) {
@@ -27,7 +35,8 @@ var type = (function () {
 		} else if (is('Array', params)) {
 			args = params;
 		} else {
-			return optional; // Return true if parameters were optional.
+			// Return arguments if parameters were optional.
+			return (optional || types.length === 0) ? args : handleException('[check] No arguments given, not optional.');
 		}
 
 		// If we allow optional parameters, just check the given ones.
@@ -49,32 +58,25 @@ var type = (function () {
 			options = types[i].split('|');
 
 			if (!options.reduce(reductionBy(type), is(options[0], type))) {
-				return false;
+				return handleException('[check] Type mismatch.');
 			}
 		}
 
-		return true;
-	}
-
-	// Same as check, but throws TypeError instead of returning anything.
-	function validation() {
-		if (!check.apply(null, arguments)) {
-			throw new TypeError('Invalid parameter types');
-		}
+		return args;
 	}
 
 	function arrayOf(type, array) {
-		validation(false, arguments, 'String', 'Array|Arguments');
+		check(false, arguments, 'String', 'Array|Arguments');
 
 		if (is('Arguments', array)) {
 			array = Array.prototype.slice.call(array);
 		} else if (!is('Array', array)) {
-			throw new TypeError('Second parameter must be Arguments or Array.');
+			return handleException('[arrayOf] Second parameter must be Arguments or Array.');
 		}
 
 		for (var i = 0; i < array.length; i++) {
 			if (!is(type, array[i])) {
-				return false;
+				return handleException('[arrayOf] ' + array[i] + ' is not a ' + type + '.');
 			}
 		}
 
@@ -82,12 +84,12 @@ var type = (function () {
 	}
 
 	function expect(type, obj) {
-		validation(false, arguments, 'String', 'Any');
+		check(false, arguments, 'String', 'Any');
 		var actual;
 
 		if (!is(type, obj)) {
 			actual = Object.prototype.toString.call(obj).slice(8, -1);
-			throw new TypeError('Expected ' + type + ' got "' + obj + '" (' + actual + ')');
+			return handleException('[expect] Expected ' + type + ' got "' + obj + '" (' + actual + ')');
 		} else {
 			return obj;
 		}
@@ -106,9 +108,6 @@ var type = (function () {
 
 	utils.check = check.bind(null, false);
 	utils.checkOptional = check.bind(null, true);
-
-	utils.validation = validation.bind(null, false);
-	utils.validationOptional = validation.bind(null, true);
 
 	// We don't want anyone to fiddle with our methods.
 	Object.freeze(utils);
