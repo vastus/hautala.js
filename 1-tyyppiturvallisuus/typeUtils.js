@@ -1,9 +1,12 @@
 var type = (function (onException) {
 	"use strict";
 
+	// LIBRARY PRIVATES //
+	/////////////////////
+
 	var handleException, utils = {};
 
-	if (is('Function', onException)) {
+	if (className(onException) === 'function') {
 		// If we were given an exception handler, just return what it returns.
 		handleException = function (msg) { return onException(new TypeError(msg)); };
 	} else {
@@ -11,54 +14,56 @@ var type = (function (onException) {
 		handleException = function (msg) { throw new TypeError(msg); };
 	}
 
-	// Check for the class/type of an object.
-	function is(type, obj) {
-		var className = Object.prototype.toString.call(obj).slice(8, -1);
-
-		return (type === 'undefined' && obj === undefined) ||
-			(type === 'null' && obj === null) ||
-			// Special check to disallow NaN as a Number.
-			(type === 'Number' && className === 'Number' && !isNaN(obj)) ||
-			// Detect separately.
-			(type === 'NaN' && className === 'Number' && isNaN(obj)) ||
-			// Check anything other than a number by it's class name.
-			(type !== 'Number' && type === className);
+	function className(obj) {
+		var type = Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+		if (type === 'number') { return isNaN(obj) ? 'nan' : 'number'; }
+		return type;
 	}
 
-	// Check if given array or arguments object contains certain types.
-	function check(optional, params) {
-		var args, length, options, type,
-			types = Array.prototype.slice.call(arguments, 2);
+	function is(type, obj) {
+		if (className(type) !== 'string') {
+			return handleException('[is] Type must be a string like "Number".');
+		}
+		type = type.toLowerCase();
 
-		if (is('Arguments', params)) {
-			args = Array.prototype.slice.call(params);
-		} else if (is('Array', params)) {
-			args = params;
+		return (type === 'undefined' && obj === undefined) ||
+			(type === 'null' && obj === null) || type === className(obj);
+	}
+
+	function expect(type, obj) {
+		check(false, arguments, 'String', 'Any');
+
+		if (!is(type, obj)) {
+			return handleException('[expect] Expected ' + type + ' got "' + obj +
+				'" (' + className(obj) + ')');
 		} else {
-			// Return arguments if parameters were optional.
-			return (optional || types.length === 0) ? args :
-				handleException('[check] No arguments given, not optional.');
+			return obj;
+		}
+	}
+
+	function check(optional, params) {
+		var args, types = Array.prototype.slice.call(arguments, 2);
+
+		if (!types.length) { return handleException('[check] Must give types to check.'); }
+
+		if (is('Arguments', params))    { args = Array.prototype.slice.call(params);
+		} else if (is('Array', params)) { args = params;
+		} else { return optional ? args : handleException('[check] No arguments given.'); }
+
+		if (args.length > types.length) {
+			return handleException('[check] More arguments than types.');
+		}
+
+		function matcher(value) {
+			return function match(type) { return is(type, value); };
 		}
 
 		// If we allow optional parameters, just check the given ones.
-		length = (optional ? args : types).length;
+		for (var i = (optional ? args : types).length - 1; i >= 0; i--) {
+			if (types[i] === 'Any') { continue; }
 
-		function reductionBy(type) {
-			return function (current, next) {
-				return current || is(next, type);
-			};
-		}
-
-		for (var i = 0; i < length; i++) {
-			type = args[i];
-
-			if (types[i] === 'Any') {
-				continue;
-			}
 			// The input is a list of possible types e.g. Number|String
-			options = types[i].split('|');
-
-			if (!options.reduce(reductionBy(type), is(options[0], type))) {
+			if (!(types[i]).split('|').some(matcher(args[i]))) {
 				return handleException('[check] Type mismatch.');
 			}
 		}
@@ -75,44 +80,32 @@ var type = (function (onException) {
 			return handleException('[arrayOf] Second parameter must be Arguments or Array.');
 		}
 
-		for (var i = 0; i < array.length; i++) {
-			if (!is(type, array[i])) {
-				return handleException('[arrayOf] ' + array[i] + ' is not a ' + type + '.');
-			}
+		if (array.every(is.bind(null, type))) {
+			return true;
 		}
 
-		return true;
+		return handleException('[arrayOf] Type mismatch.');
 	}
 
-	function expect(type, obj) {
-		check(false, arguments, 'String', 'Any');
-		var actual;
+	// LIBRARY PUBLICS //
+	////////////////////
 
-		if (!is(type, obj)) {
-			actual = Object.prototype.toString.call(obj).slice(8, -1);
-			return handleException('[expect] Expected ' + type + ' got "' + obj +
-				'" (' + actual + ')');
-		} else {
-			return obj;
-		}
-	}
-
-	// Generated helpers isNumber(x), isString(x), etc.
 	['Arguments', 'Array', 'Boolean', 'Date', 'Error', 'Function',
-	'JSON', 'Math', 'Number', 'Object', 'RegExp', 'String', 'NaN'
+	'JSON', 'Math', 'Number', 'Object', 'RegExp', 'String', 'NaN', 'Undefined', 'Null'
 	].forEach(function (type) {
 		utils['is' + type] = is.bind(null, type);
+		utils['expect' + type] = expect.bind(null, type);		
 	});
 
 	utils.is = is;
+	utils.of = className;
 	utils.expect = expect;
 	utils.isArrayOf = arrayOf;
 
 	utils.check = check.bind(null, false);
 	utils.checkOptional = check.bind(null, true);
 
-	// We don't want anyone to fiddle with our methods.
-	Object.freeze(utils);
+	Object.freeze(utils); // We don't want anyone to fiddle with our functions.
 
 	return utils;
 })();
