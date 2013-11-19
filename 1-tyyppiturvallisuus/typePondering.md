@@ -8,23 +8,26 @@ Kirjastomme palauttaa kokoelman työkaluja tyyppien hyödyntämiseen käyttäen 
 moduulityyliä, jolla estetään sisäisten apufunktioiden käyttäminen, sillä niiden toiminta saattaisi muuttua
 todennäköisemmin kuin paljastettujen funktioiden.
 
-    var type = (function () { return { ... }; })();
+    var type = (function () { return { ... }; })(errorHandler);
 
-Lisäksi se hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
+`errorHandler` on vapaaehtoinen virheenkäsittelijä, jos jokin funktio heittää poikkeuksen, se kutsuu errorHandleria virheoliolla, jonka voi sitten lokittaa tai heittää. Esimerkiksi kehitysympäristössä kannattaa heittää ja tuotantoympäristössä lokittaa. Jos errorHandleria ei anna, se oletuksena vain heittää poikkeuksen.
+
+Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
 
 ## Työkalujen esittely [typeUtils.js](./typeUtils.js)
 
-  * `type.is('Tyyppi', muuttuja)` palauttaa `true`, jos "muuttujan tyyppi" eli sen arvon tyyppi on annettu tyyppi, muutoin `false`.
+  * `type.is('tyyppi', muuttuja)` palauttaa `true`, jos "muuttujan tyyppi" eli sen arvon tyyppi on annettu tyyppi, muutoin `false`.
     * Esimerkki: `type.is('Number', 123)`
     * Huom. lyhenteet `type.isNumber(x)`, `type.isError(y)`, jne. toimivat myös.
-  * `type.expect('Tyyppi', muuttuja)` toimii kuin `is`, mutta heittää TypeError-olion tai palauttaa annetun muuttujan.
+  * `type.of(muuttuja)` kuten normaali typeof, mutta järjellisempi.
+  * `type.expect('tyyppi', muuttuja)` toimii kuin `is`, mutta aiheuttaa poikkeuksen tai palauttaa annetun muuttujan.
     * Hyöty tulee esiin funktiokutsuista: `var fib5 = type.expect('Number', fibonacci(5))`
-  * `type.isArrayOf('Tyyppi', muuttuja)` palauttaa `true`, jos taulukko sisältää vain oikeita tyyppejä.
+    * Huom. lyhenteet `type.expectNumber(x)`, `type.expectError(y)`, jne. toimivat myös.
+  * `type.isArrayOf('tyyppi', muuttuja)` palauttaa `true`, jos taulukko sisältää vain oikeita tyyppejä.
     * Esimerkki: `type.isArrayOf('Number', [1, 2, 3])`
-  * `type.check(taulukko, 'Tyyppi1', 'Tyyppi2', ..., 'TyyppiN')` palauttaa true, jos taulukon tyypit vastaavat lueteltuja.
+  * `type.check(taulukko, 'Tyyppi1', 'Tyyppi2', ..., 'TyyppiN')` palauttaa annetun taulukon, jos taulukon tyypit vastaavat lueteltuja, muutoin aiheuttaa poikkeuksen.
     * Hyödyllisin parametrien validointiin: `type.check(arguments, 'String', 'RegExp')`
   * `type.checkOptional` toimii kuten `check`, mutta tarkistaa vain annettujen arvojen tyypit.
-  * `type.validation` ja `type.validationOptional` kuten `check`, mutta ei palauta mitään, mutta heittää TypeError-olion.
 
 ## Testit [typeUtilsTest.js](./typeUtilsTest.js)
 
