@@ -1,4 +1,4 @@
-var type = (function (onException) {
+module.exports = (function (onException) {
 	"use strict";
 
 	// LIBRARY PRIVATES //

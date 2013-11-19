@@ -1,0 +1,26 @@
+{
+  "name": "OTJS-hautala",
+  "preferGlobal": "false",
+  "version": "0.0.0",
+  "author": "Juho H.",
+  "description": "Ohjelmointitekniikka JavaScript Helsingin Yliopisto",
+  "contributors": [
+    { "name": "Ville \"tuhoojabotti\" Lahdenvuo",
+      "email": "tuhoojabotti@gmail.com" }
+  ],
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jslush/node-irc-stream.git"
+  },
+  "keywords": ["javascript", "documentation", "university", "course"],
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "1.8.x"
+  },
+  "scripts": {
+    "test": "mocha --recursive -R spec"
+  },
+  "license": "MIT",
+  "engines": { "node": ">=0.10" }
+}
