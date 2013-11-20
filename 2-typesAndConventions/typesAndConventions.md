@@ -49,7 +49,7 @@ Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden e
 ### Sulkeumat
 Sulkeumia kannattaa pääsääntöisesti käyttää siellä, missä voi, kunhan ei mene hirmuiseksi kikkailuksi. Se lisää turvallisuutta piilottamalla tilan ja apufunktiot näkymättömiin. Vaarana näiden kanssa on sykliset riippuvuudet, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
 
-Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto: [testutils.js](../1-tyyppiturvallisuus/typeUtils.js)
+Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto: a) [typeUtils.js](../1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](../test/type/typeUtilsTest.js)
 
 
 ### Poikkeukset
