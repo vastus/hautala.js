@@ -4,12 +4,12 @@ Käytäntöjä
 Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 ## Johdanto
 
-JavaScriptissä vaikuttaisi olevan kaksi eri suuntausta tyypityksen suhteen. 
-Toinen, tehokkuuteen, turvallisuuteen ja yllätyksettömyyteen pyrkivä, sekä 
+JavaScriptissä näyttäisi vaikuttavan ainakin kaksi eri suuntausta tyypityksen ja algoritmien muodostuksen suhteen. 
+Toinen on tehokkuuteen, turvallisuuteen ja yllätyksettömyyteen pyrkivä, ja toinen
 tyyppien suhteen vapaampi suuntaus, jonka uhreihin kuuluu muunmuassa 
-funktionaalinen tyyli. 
+funktionaalinen tyyli, joka kuitenkin vaikuttaa pärjäävän ihan hyvin.
 Toisaalta on kivaa saada nopeasti aikaan nätihköä ja toimivaa koodia,
-mutta toisaalta pienistä seikoista voi kasaantua 
+mutta toisaalta tämmöinen koodi voi olla järjenvastaisen hidasta.
 
 JavaScript-engineiden(lähinnä V8 tämän ryhmän näkökulmasta) nykyinen 
 kehitys tuntuu ohjaamaan tehokkuuden kannalta tyyppiturvallisen 
@@ -24,25 +24,27 @@ Sulkeumien hyödyntäminen menee hiukan sivuun tehokkuuden ja dynaamisuuden
 akselilta, mutta niidenkin käyttöön on syytä perehtyä, sillä niillä 
 saadaan aikaan turvallisempaa ja siistimpää koodia.
 
-## Pohdintaa
+## Pohdintaa ja materiaalia
 
-JavaScript on potentiaalisesti hyvinkin nopea kieli, mutta sen dynaamisuus taistelee voimakkaasti tätä ominaisuutta vastaan. Mitä parempi käsitys tulkilla on tyypeistä, sitä paremmin se pystyy pitämään koodin tehokkaana. Pieniilläkin poikkeamilla voi olla suuri vaikutus.
+JavaScript on potentiaalisesti hyvinkin nopea kieli, mutta sen dynaamisuus taistelee voimakkaasti tätä ominaisuutta vastaan. Mitä parempi käsitys tulkilla on tyypeistä, sitä paremmin se pystyy pitämään koodin tehokkaana. Pienilläkin poikkeamilla voi olla suuri vaikutus nopeuteen.
 * kattava esimerkki kiinnostuneille: http://www.html5rocks.com/en/tutorials/performance/mystery/
 * toinen esimerkki: http://n64js.blogspot.fi/2012/08/javascript-optimisation-primer.html
 
-
-## Käytännöt
-
-### Tyypit
-
-
-### Funktiot ja funktionaalisuus
-
-* Mieluummin useampi kopio samasta funktiosta, kuin kutsuisi samaa funktiota eri tyyppisillä parametreilla
+Funktiosta kannattaa mieluummin olla useampi kopio eri tapauksille, kuin kutsuisi samaa funktiota eri tyyppisillä parametreilla. Tämä voi olla kova pala funktionaalisessa ohjelmoinnissa, mutta ei nopeus aina ole tärkein.
   * Nopeustesti: http://jsperf.com/mixing-boolean-and-int n64js blogista
   * Sisäisesti v8 esimerkiksi optimoi tyypeille paljon speksiä tarkemmin, jolloin olion asiaan liittymänkin kentän muuttaminen voi aiheuttaa merkittävää hidastumista http://www.html5rocks.com/en/tutorials/speed/v8/
 
+Funktionaalinen ohjelmointi on paikallaan silloin, kun se ajaa asiansa siististi ilman, että siitä aiheutuu nopeushaittaa. Rinnakkaistamisessa siitä ei varsinaisesti ole etua, sillä useimmat javascript-toteutukset ovat yksisäikeisiä. Muutamat sisäänrakennetut funktionaalisen ohjelmoinnin apufunktiot saattavat hieman kiertää optimoituvuus-ongelmaa funktionaalisen ohjelmoinnin hyväksi.
+
+## Käytännöt
+
+### Tyypit, funktiot ja funktionaalisuus
+Tyyppiturvallisuuteen kannattaa käyttää viimeviikkoisia tarkistusfunktioita, sekä lisäksi muutamaa konversionpakotuskikkaa/funktiota tehokkuuden vuoksi. Konversionpakotus estää funktiota deoptimoitumasta uudentyyppisellä parametrilla muutamassa tapauksessa. Varsinkin usein käytettäväy yleis/apufunktiot ovat vaarassa.
+
+
 ### Sulkeumat
+
+
 
 ### Poikkeukset
 
