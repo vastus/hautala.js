@@ -41,7 +41,7 @@ Funktionaalinen ohjelmointi on paikallaan silloin, kun se ajaa asiansa siististi
 
 ### Tyypit, funktiot ja funktionaalisuus
 Tyyppiturvallisuuteen kannattaa käyttää viimeviikkoisia tarkistusfunktioita, sekä lisäksi muutamaa konversionpakotuskikkaa/funktiota tehokkuuden vuoksi. Konversionpakotus estää funktiota deoptimoitumasta uudentyyppisellä parametrilla muutamassa tapauksessa. Varsinkin usein käytettävät yleis/apufunktiot ovat vaarassa. 
-Jos funktionaalisesta koodista loppuu teho, usein kutsutuista osista voi luoda eri tyypeille omat kopionsa, jolloin optimointeja ei heitetä hukkaan. Funktionaalisen ohjelmoinnin perään haikailevat voivat tutustus underscore.js-kirjastoon.
+Jos funktionaalisesta koodista loppuu teho, usein kutsutuista osista voi luoda eri tyypeille omat kopionsa, jolloin optimointeja ei heitetä hukkaan. Funktionaalisen ohjelmoinnin perään haikailevat voivat tutustus [underscore.js](http://underscorejs.org/)-kirjastoon.
 
 Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden ensiluokkaisuus tarjoaa sen verran käteviä välineitä. Kannattaa hyödyntää, mitä on tarjolla, mutta pitää silmä tarkkana tyypeille siellä, missä sillä on eniten väliä. Raskaassa koodissa tarkkuus tyyppien kanssa on tärkeää tehokkuuden kannalta ja rennommassa koodissa taas yhteensopivuuden kannalta.
 
