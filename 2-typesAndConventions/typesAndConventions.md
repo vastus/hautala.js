@@ -45,6 +45,7 @@ Jos funktionaalisesta koodista loppuu teho, usein kutsutuista osista voi luoda e
 
 Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden ensiluokkaisuus tarjoaa sen verran käteviä välineitä. Kannattaa hyödyntää, mitä on tarjolla, mutta pitää silmä tarkkana tyypeille siellä, missä sillä on eniten väliä. Raskaassa koodissa tarkkuus tyyppien kanssa on tärkeää tehokkuuden kannalta ja rennommassa koodissa taas yhteensopivuuden kannalta.
 
+[esimerkkejä](./functionalExamples.js)
 
 ### Sulkeumat
 Sulkeumia kannattaa pääsääntöisesti käyttää siellä, missä voi, kunhan ei mene hirmuiseksi kikkailuksi. Se lisää turvallisuutta piilottamalla tilan ja apufunktiot näkymättömiin. Vaarana näiden kanssa on sykliset riippuvuudet, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
