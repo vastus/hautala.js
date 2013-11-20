@@ -52,6 +52,15 @@ Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden e
 
 ### Poikkeukset
 
-Poikkeusten kanssa yhtenäisyys on myös hyväksi, mutta lähinnä käytännön kannalta. Error-luokasta periminen tuo mukanaan stack tracen ja virheenkäsittelykoodi saattaa riippua tästä. Kannattaa noudattaa varsinkin kirjastoissa.
+Poikkeusten kanssa yhtenäisyys on myös hyväksi, mutta lähinnä käytännön kannalta.
+Kannattaa heittää uusi Error-olio, jotta saa stack tracen.
+Myös virheenkäsittelykoodi saattaa riippua Error-olion ominaisuuksista.
+Paras tapa ehkä on tehdä omia Error-olioita Errorin prototyypillä.
+Tätä metodia kannattaa noudattaa varsinkin kirjastoissa.
+
+Yksi JavaScriptin ongelmista on se, että poikkeusten stack trace on yleensä hyvin lyhyt.
+Tämä johtuu siitä, että koodi on eventtipohjaista.
+Koodi suoritetaan vain, jos tulee joku tapahtuma, kuten hiiren klikkaus tai AJAX-takaisinkutsu.
+V8-moottorista löytyy tähänkin ratkaisu: [long stack traces](https://github.com/tlrobinson/long-stack-traces)
 
 Tehokkuuden kannalta poikkeukset eivät ole niin hyvä juttu, sillä niiden optimointi on vaikeampaa, joten tämän käytännön rinnalle suositamme defensiivistä strategiaa, joka suojautuu virhetilanteilta aikaisessa vaiheessa esimerkiksi viimeviikon tyyppitarkistustyökaluilla.
