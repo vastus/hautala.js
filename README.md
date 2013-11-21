@@ -1,6 +1,6 @@
 # Ohjelmointitekniikka (JavaScript)
 
-![build status](https://api.travis-ci.org/vastus/hautala.js.png)
+[![Build Status](https://travis-ci.org/vastus/hautala.js.png)](https://travis-ci.org/vastus/hautala.js)
 
 TKTL:n kurssin Ohjelmointitekniikka (JavaScript) laskuharjoitusryhmä Hautala.
 
