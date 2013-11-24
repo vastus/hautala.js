@@ -67,7 +67,7 @@ tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehd채 v�
 ```
 
 ###Esimerkki 2 Rajapinnan toteutus
-Apina toteuttaa rajapinnan Bot koska sill채 on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta koska kivell채 ei ole funktiota puhu
+Apina toteuttaa rajapinnan Bot koska sill채 on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta, koska kivell채 ei ole funktiota puhu.
 ```javascript
 var kivi = {
 	paino : 9000
