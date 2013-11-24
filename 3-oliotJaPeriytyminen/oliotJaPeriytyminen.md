@@ -40,13 +40,13 @@ kokkaaja.kokkaa("lihapullia"); // tulostaa "kokkaaja: kokataas annos lihapullia"
 Luodaan vielä TuhisBot "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä TuhisBotilta löytyy oma puhu funktionsa.
 ```javascript
 function TuhisBot(nimi){
-	//kutsutaan superin konstruktoria
 	TuhisBot.super_.call(this,nimi);
-	this.puhu = function(lause){
-		console.log(this.nimi +": "+lause);
-	}
 }
 glass.inherits(TuhisBot,CookBot);
+
+TuhisBot.prototype.puhu = function(lause){
+    console.log(this.nimi+": "+lause);
+}
 TuhisBot.prototype.huuteleLuennolla = function(){
 	var jsfaktat = [
 	"fakta1",
@@ -55,6 +55,7 @@ TuhisBot.prototype.huuteleLuennolla = function(){
 	]
 	console.log(this.nimi + ": Itseasiassa "+ jsfaktat[Math.floor(Math.random()*jsfaktat.length)]);
 }
+
 
 var tuhis = new TuhisBot("Ville");
 tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kannulle"
