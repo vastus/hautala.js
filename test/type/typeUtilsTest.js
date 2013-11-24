@@ -1,5 +1,5 @@
 var assert = require('assert')
-	, type = require('../../lib/index').type;
+	, type = require('../..').type;
 
 function testIs(testType) {
 	return function (value) {

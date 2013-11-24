@@ -1,5 +1,5 @@
 var assert = require('assert')
-	, examples = require('../../lib/index').functional;
+	, examples = require('../..').functional;
 
 describe('sum' , function () {
 	it('should work non-functional', function () {
