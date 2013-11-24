@@ -3,12 +3,12 @@ Oliot ja periytyminen
 Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
-Periytyminen auttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan selkeyttää ongelmien hahmottamista. 
-Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa.
-###Esimerkki 1, Periytyminen
-Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
+Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan helpottaa ongelmien hahmottamista. Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät.
 
-Luodaan ensin konstruktorifunktio, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
+Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
+###Esimerkki 1, Periytyminen
+
+Luodaan ensin konstruktorifunktio Bot, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
 ```javascript
 function Bot(name) {
 	this.nimi = name;
@@ -22,7 +22,7 @@ var botti = new Bot("ropotti");
 botti.puhu(); // tulostaa "ropotti: beep
 ```
 
-Luodaan CookBot konstruktorin avulla "olio" joka perii Botin ominaisuudet. Niinpä "kokkaajalla" toimii sekä botilta peritty puhu, sekä CookBotin oma kokkaa funktio
+Luodaan CookBot konstruktorin avulla "olio" joka perii Botin ominaisuudet. Niinpä "kokkaajalla", joka on CookBotin ilmentymä, toimii sekä botilta peritty puhu, sekä CookBotin oma kokkaa funktio.
 ```javascript
 function CookBot(nimi) {
 	// Kutsutaan superin konstruktoria.
@@ -38,7 +38,7 @@ var kokkaaja = new CookBot("kokkaaja");
 kokkaaja.puhu(); // tulostaa "kokkaaja: beep"
 kokkaaja.kokkaa("lihapullia"); // tulostaa "kokkaaja: kokataas annos lihapullia"
 ```
-Luodaan vielä TuhisBot konstruktorin avulla "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä, koska TuhisBotilta löytyy oma puhu funktionsa. Mikäli TuhisBotilla ei olisi omaa puhu funktiota, etsittäisiin sitä seuraavaksi CookBotilta ja lopuksi Botilta. Mikäli Botillakaan ei olisi puhu funktiota, kyseltäisiin sitä aina ylemmältä tasolta kunnes päästäisiin Objectiin asti ja palautettaisiin undefined.
+Luodaan vielä TuhisBot konstruktorin avulla "olio", joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä, koska TuhisBotilta löytyy oma puhu funktionsa. Mikäli TuhisBotilla ei olisi omaa puhu funktiota, etsittäisiin sitä seuraavaksi CookBotilta ja lopuksi Botilta. Mikäli Botillakaan ei olisi puhu funktiota, kyseltäisiin sitä aina ylemmältä tasolta kunnes päästäisiin Objectiin asti ja palautettaisiin undefined.
 ```javascript
 function TuhisBot() {
 	TuhisBot.super_.call(this, 'Tuhis');
@@ -77,7 +77,7 @@ console.log(volvo.pyorienMaara) // 12
 console.log(new Auto().pyorienMaara); //6
 ```
 ###Esimerkki 3, Rajapinnan toteutus
-Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
+Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot. Sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
 ```javascript
 var kivi = {
 	paino : 9000
@@ -94,7 +94,7 @@ glass.performs(apina, Bot); //true
 
 ###Esimerkki 4, Moniperintä
 
-"Luokat" henkilö ja kyborgi toutettaa funktion "elele". Lisäksi kyborgi perii myös botin ominaisuudet. 
+"Luokat" henkilö ja kyborgi toutettaa funktion "elele". Lisäksi kyborgi perii myös botin ominaisuudet. Jos Botilla ja Henkilöllä olisi molemmilla funktio puhu(), kyborgille jäisi voimaan se puhu(), kumpi on myöhemmin peritty(=asetettu). 
 ```javascript
 function Henkilo(name) {
         this.nimi = name;
