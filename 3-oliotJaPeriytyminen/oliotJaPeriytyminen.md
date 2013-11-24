@@ -4,7 +4,7 @@ Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
 ###Esimerkki
-Esimerkit käyttää glass.js kirjastoamme joka sisältää myös funktiota noden coresta (linkkiä)
+Esimerkit käyttää [glass.js](glass.js) kirjastoamme joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
 
 Luodaan botti "olio" jolla on funktio "puhu".
 ```javascript
