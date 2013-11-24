@@ -40,7 +40,7 @@ var kokkaaja = new CookBot("kokkaaja");
 kokkaaja.puhu(); // tulostaa "kokkaaja: beep"
 kokkaaja.kokkaa("lihapullia"); // tulostaa "kokkaaja: kokataas annos lihapullia"
 ```
-Luodaan vielä TuhisBot "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä TuhisBotilta löytyy oma puhu funktionsa.
+Luodaan vielä TuhisBot "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä TuhisBotilta löytyy oma puhu funktionsa. Mikäli TuhisBotilla ei olisi omaa puhu funktiota, etsittäisiin sitä seuraavaksi CookBotilta ja lopuksi Botilta. Mikäli Botillakaan ei olisi puhu funktiota, kyseltäisiin sitä aina ylemmältä tasolta kunnes päästäisiin Objectiin asti ja palautettaisiin undefined.
 ```javascript
 function TuhisBot() {
 	TuhisBot.super_.call(this, 'Tuhis');
