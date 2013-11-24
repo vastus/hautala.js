@@ -4,8 +4,7 @@ Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
  
-Vaikka javascriptissä ei olekkaan perinteisiä luokkia, niin javascriptissä oliot koostuvat avain-arvo pareista. Arvoiksi voi tallettaa "mitä tahansa". Olion omien kenttien lisäksi, sillä on myös prototyyppiolionsa kentät.
-
+Vaikka javascriptissä ei olekkaan perinteisiä luokkia, niin javascriptissä oliot koostuvat avain-arvo pareista.
 Prototyyppiolioiden avulla voidaan toteuttaa perintää, joka edesauttaa koodin uudelleenkäyttöä ja täten vähentää myös copypastea. Perintää käyttämällä voidaan selkeyttää ongelman hahmottamista.
 
 ###Esimerkki
