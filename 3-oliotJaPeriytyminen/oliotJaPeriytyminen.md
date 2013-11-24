@@ -5,7 +5,7 @@ Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 ##Periytyminen
 Periytyminen auttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan selkeyttää ongelmien hahmottamista. 
 Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa.
-###Esimerkki 1 Periytyminen
+###Esimerkki 1, Periytyminen
 Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
 
 Luodaan ensin konstruktorifunktio, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
@@ -63,7 +63,7 @@ tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kan
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
-###Esimerkki 2 Prototyypin ja new konstruktorin toimintaa
+###Esimerkki 2, Prototyypin ja new konstruktorin toimintaa
 Vaikka prototyyppiä muuttaisi myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
 ```javascript
 function Auto(){};
@@ -76,7 +76,7 @@ volvo.pyorienMaara = 12;
 console.log(volvo.pyorienMaara) // 12
 console.log(new Auto().pyorienMaara); //6
 ```
-###Esimerkki 3 Rajapinnan toteutus
+###Esimerkki 3, Rajapinnan toteutus
 Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
 ```javascript
 var kivi = {
@@ -92,7 +92,7 @@ glass.performs(kivi, Bot); // false
 glass.performs(apina, Bot); //true
 ```
 
-###Esimerkki 4 Moniperintä
+###Esimerkki 4, Moniperintä
 
 "Luokat" henkilö ja kyborgi toutettaa funktion "elele". Lisäksi kyborgi perii myös botin ominaisuudet. 
 ```javascript
