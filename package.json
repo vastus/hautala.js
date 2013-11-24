@@ -17,7 +17,8 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "1.14.x",
-    "jshint": "2.3.x"
+    "jshint": "2.3.x",
+    "cjson": "0.2.x"
   },
   "scripts": {
     "test": "mocha --recursive -R spec"

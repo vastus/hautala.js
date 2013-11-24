@@ -1,3 +1,4 @@
+'use strict';
 
 exports.sum = function (a) {
 	var s = 0;
