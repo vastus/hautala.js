@@ -61,3 +61,19 @@ tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kan
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
+
+###Esimerkki 2
+Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta koska kivellä ei ole funktiota puhu
+```javascript
+var kivi = {
+	paino : 9000
+};
+
+var apina = {
+    puhu: function () {
+        console.log('apinan puhetta');
+    }
+};
+glass.performs(kivi, Bot); // false
+glass.performs(apina, Bot); //true
+```
