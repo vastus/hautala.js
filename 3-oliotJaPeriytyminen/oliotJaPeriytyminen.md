@@ -64,6 +64,18 @@ tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
 
+Vaikka prototyyppiä muuttaisi myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
+```javascript
+function Auto(){};
+Auto.prototype.pyorienMaara = 4;
+var volvo = new Auto();
+console.log(volvo.pyorienMaara); // 4
+Auto.prototype.pyorienMaara = 6;
+console.log(volvo.pyorienmaara); // 6
+volvo.pyorienMaara = 12;
+console.log(volvo.pyorienMaara) // 12
+console.log(new Auto().pyorienMaara); //6
+
 ###Esimerkki 2 Rajapinnan toteutus
 Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
 ```javascript
