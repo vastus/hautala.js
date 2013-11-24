@@ -17,14 +17,16 @@ module.exports = (function () {
 		});
 	}
 
-	function extend(origin, add) {
-		// Don't do anything if add isn't an object
-		if (!add || !type.isObject(add)) { return origin; }
-		var keys = Object.keys(add);
-		var i = keys.length;
-		while (i--) {
-			origin[keys[i]] = add[keys[i]];
-		}
+	function extend(origin) {
+		var addons = Array.prototype.slice.call(arguments, 1);
+		// Don't do anything if addons aren't objects.
+		if (!type.isArrayOf('Object', addons)) { return origin; }
+		addons.forEach(function (add) {
+			var keys = Object.keys(add), i = keys.length;
+			while (i--) {
+				origin[keys[i]] = add[keys[i]];
+			}
+		});
 		return origin;
 	}
 
