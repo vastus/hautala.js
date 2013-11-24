@@ -3,7 +3,7 @@ Oliot ja periytyminen
 Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
-Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan helpottaa ongelmien hahmottamista. Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät.
+Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan helpottaa ongelmien hahmottamista. Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Prototyyppiketjuja käyttämällä voidaan käyttää perintää.
 
 Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
 ###Esimerkki 1, Periytyminen
