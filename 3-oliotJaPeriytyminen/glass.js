@@ -26,14 +26,14 @@ module.exports = (function(){
 	
 	// olisi function implements mutta implements on reserved word
 	function performs(o, interf){
-		for(var kentta in interf){
-			if(type.isFunction(kentta)){
-				if(o.kentta == interf.kentta){
-					return false;
-				}
-			}
+	  for(var kentta in interf){
+	    if(type.isFunction(kentta)){
+	      if(o.kentta == interf.kentta){
+	         return false;
+          }
 		}
-		return true;
+	  }
+	  return true;
 	}
 	
 })
