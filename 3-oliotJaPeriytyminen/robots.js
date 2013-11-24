@@ -2,23 +2,26 @@
 
 var glass = require('..').glass;
 
-function bot(nimi){
-	this.nimi = nimi;
-	this.puhu = function() {
-		console.log(nimi+": beep");
-	};
+function Bot(name) {
+	this.nimi = name;
 }
 
-function cookbot(nimi){
-	this.nimi = nimi;
-	this.kokkaa = function(ruoka) {
-		console.log(nimi+": kokataas annos "+ ruoka);
-	};
-}
+Bot.prototype.puhu = function() {
+	console.log(this.nimi + ": beep");
+};
 
-console.log(glass);
-//glass.inherits(bot,cookbot);
-var botti = new bot("es");
+function CookBot(nimi) {
+	// Kutsutaan superin konstruktoria.
+	CookBot.super_.call(this, nimi);
+}
+glass.inherits(CookBot, Bot);
+
+CookBot.prototype.kokkaa = function(ruoka) {
+	console.log(this.nimi + ": kokataas annos " + ruoka);
+};
+
+var botti = new Bot("es");
 botti.puhu();
-var kokkaaja = new cookbot("kokkaaja");
+var kokkaaja = new CookBot("kokkaaja");
+kokkaaja.puhu();
 kokkaaja.kokkaa("lihapullia");
