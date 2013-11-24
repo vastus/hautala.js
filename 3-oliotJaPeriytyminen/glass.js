@@ -28,14 +28,19 @@ module.exports = (function () {
 		return origin;
 	}
 
-	// olisi function implements mutta implements on reserved word
+	// Olisi nimetty implements mutta se on reserved word.
 	function performs(o, interf) {
-		for (var kentta in interf) {
-			if (type.isFunction(kentta)&&!type.isFunction(o.kentta)) {
-			    return false;
-            }
+		var methods = Object.keys(interf.prototype || {});
+		// Seurataan perintäketjua.
+		for (var o2 = interf; o2; o2 = o2.super_) {
+			methods = methods.concat(Object.keys(o2.prototype || {}));
 		}
-		return true;
+		return methods.every(function (key) {
+			// Jos interface:ssa on metodi, niin...
+			return type.isFunction(interf.prototype[key]) ?
+				// o:lla on, tai o:n prototyypissä on, haluttu metodi.
+				type.isFunction(o[key] || o.prototype && o.prototype[key]) : true;
+		});
 	}
 
 	utils.inherits = inherits;
