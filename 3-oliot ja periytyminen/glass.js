@@ -14,7 +14,7 @@ module.exports = (function(){
 
 	function extend(origin, add) {
 	  // Don't do anything if add isn't an object
-	  if (!add || !isObject(add)) return origin;
+	  if (!add || !type.isObject(add)) return origin;
 
 	  var keys = Object.keys(add);
 	  var i = keys.length;
