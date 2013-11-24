@@ -25,11 +25,11 @@ CookBot.prototype.kokkaa = function(ruoka) {
 
 function TuhisBot(nimi){
 	TuhisBot.super_.call(this,nimi);
-	this.puhu = function(lause){
-		console.log(this.nimi +": "+lause);
-	}
 }
 glass.inherits(TuhisBot,CookBot);
+TuhisBot.prototype.puhu = function(lause){
+    console.log(this.nimi+": "+lause);
+}
 TuhisBot.prototype.huuteleLuennolla = function(){
 	var jsfaktat = [
 	"fakta1",

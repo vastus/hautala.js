@@ -1,0 +1,23 @@
+info it worked if it ends with ok
+verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'test' ]
+info using npm@1.1.4
+info using node@v0.6.19
+verbose config file /home/lalli/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+ERR! Error: ENOENT, open '/home/lalli/projects/hautala.js/3-oliotJaPeriytyminen/package.json'
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /home/lalli/projects/hautala.js/3-oliotJaPeriytyminen/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.8.0-19-generic
+ERR! command "/usr/bin/nodejs" "/usr/bin/npm" "test"
+ERR! cwd /home/lalli/projects/hautala.js/3-oliotJaPeriytyminen
+ERR! node -v v0.6.19
+ERR! npm -v 1.1.4
+ERR! path /home/lalli/projects/hautala.js/3-oliotJaPeriytyminen/package.json
+ERR! code ENOENT
+ERR! message ENOENT, open '/home/lalli/projects/hautala.js/3-oliotJaPeriytyminen/package.json'
+ERR! errno {}
+verbose exit [ 1, true ]

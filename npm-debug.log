@@ -1,0 +1,40 @@
+info it worked if it ends with ok
+verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'test' ]
+info using npm@1.1.4
+info using node@v0.6.19
+verbose config file /home/lalli/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose caching /home/lalli/projects/hautala.js/package.json
+verbose loadDefaults OTJS-hautala@0.0.0
+verbose run-script [ 'pretest', 'test', 'posttest' ]
+info pretest OTJS-hautala@0.0.0
+info test OTJS-hautala@0.0.0
+verbose unsafe-perm in lifecycle true
+silly exec sh "-c" "mocha --recursive -R spec"
+silly spawning [ 'sh',
+silly spawning   [ '-c', 'mocha --recursive -R spec' ],
+silly spawning   '/home/lalli/projects/hautala.js' ]
+info OTJS-hautala@0.0.0 Failed to exec test script
+ERR! OTJS-hautala@0.0.0 test: `mocha --recursive -R spec`
+ERR! `sh "-c" "mocha --recursive -R spec"` failed with 127
+ERR! 
+ERR! Failed at the OTJS-hautala@0.0.0 test script.
+ERR! This is most likely a problem with the OTJS-hautala package,
+ERR! not with npm itself.
+ERR! Tell the author that this fails on your system:
+ERR!     mocha --recursive -R spec
+ERR! You can get their info via:
+ERR!     npm owner ls OTJS-hautala
+ERR! There is likely additional logging output above.
+ERR! 
+ERR! System Linux 3.8.0-19-generic
+ERR! command "/usr/bin/nodejs" "/usr/bin/npm" "test"
+ERR! cwd /home/lalli/projects/hautala.js
+ERR! node -v v0.6.19
+ERR! npm -v 1.1.4
+ERR! code ELIFECYCLE
+ERR! message OTJS-hautala@0.0.0 test: `mocha --recursive -R spec`
+ERR! message `sh "-c" "mocha --recursive -R spec"` failed with 127
+ERR! errno {}
+verbose exit [ 1, true ]
