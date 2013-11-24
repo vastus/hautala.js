@@ -12,12 +12,11 @@ function Bot(name) {
 	this.nimi = name;
 }
 
-var botti = new Bot("ropotti");
-
 Bot.prototype.puhu = function () {
 	console.log(this.nimi + ": beep");
 };
 
+var botti = new Bot("ropotti");
 botti.puhu(); // tulostaa "ropotti: beep
 ```
 
