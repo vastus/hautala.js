@@ -1,5 +1,5 @@
+var type = require('../lib/index').type
 module.exports = (function(){
-oho 
 	 function inherits(ctor, superCtor) {
 	  ctor.super_ = superCtor;
 	  ctor.prototype = Object.create(superCtor.prototype, {
@@ -27,7 +27,7 @@ oho
 	// olisi function implements mutta implements on reserved word
 	function performs(o, interf){
 		for(var kentta in interf){
-			if(typeof(kentta) == "function"){
+			if(isFunction(kentta){
 				if(o.kentta == interf.kentta){
 					return false;
 				}
