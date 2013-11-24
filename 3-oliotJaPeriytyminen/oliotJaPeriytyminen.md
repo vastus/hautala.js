@@ -5,7 +5,7 @@ Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 ##Periytyminen
  
 Vaikka javascriptissä ei olekkaan perinteisiä luokkia, niin javascriptissä oliot koostuvat avain-arvo pareista.
-Prototyyppiketjujen avulla voidaan toteuttaa perintää, joka edesauttaa koodin uudelleenkäyttöä ja täten vähentää myös copypastea. Perintää käyttämällä voidaan selkeyttää ongelman hahmottamista.
+Prototyyppiketjujen avulla voidaan toteuttaa perintää, joka edesauttaa koodin uudelleenkäyttöä ja täten vähentää myös copypastea. Perintää käyttämällä voidaan selkeyttää ongelman hahmottamista. Esimerkkejä selkeyttämisestä ja periytymisen käyttämisestä alla.
 
 ###Esimerkki
 Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
