@@ -11,7 +11,7 @@
   "main": "./lib/index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jslush/node-irc-stream.git"
+    "url": "https://github.com/vastus/hautala.js.git"
   },
   "keywords": ["javascript", "documentation", "university", "course"],
   "dependencies": {},
