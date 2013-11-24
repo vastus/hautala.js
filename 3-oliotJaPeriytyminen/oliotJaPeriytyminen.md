@@ -3,14 +3,12 @@ Oliot ja periytyminen
 Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
- 
-Vaikka javascriptissä ei olekkaan perinteisiä luokkia, niin javascriptissä oliot koostuvat avain-arvo pareista.
-Prototyyppiketjujen avulla voidaan toteuttaa perintää, joka edesauttaa koodin uudelleenkäyttöä ja täten vähentää myös copypastea. Perintää käyttämällä voidaan selkeyttää ongelman hahmottamista. Esimerkkejä selkeyttämisestä ja periytymisen käyttämisestä alla.
-
+Periytyminen auttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan selkeyttää ongelmien hahmottamista. 
+Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa.
 ###Esimerkki 1 Periytyminen
 Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
 
-Luodaan botti "olio" jolla on funktio "puhu".
+Luodaan ensin konstruktorifunktio, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
 ```javascript
 function Bot(name) {
 	this.nimi = name;
@@ -24,7 +22,7 @@ var botti = new Bot("ropotti");
 botti.puhu(); // tulostaa "ropotti: beep
 ```
 
-Luodaan CookBot "olio" joka perii Botin ominaisuudet. Niinpä "kokkaajalla" toimii sekä botilta peritty puhu, sekä CookBotin oma kokkaa funktio
+Luodaan CookBot konstruktorin avulla "olio" joka perii Botin ominaisuudet. Niinpä "kokkaajalla" toimii sekä botilta peritty puhu, sekä CookBotin oma kokkaa funktio
 ```javascript
 function CookBot(nimi) {
 	// Kutsutaan superin konstruktoria.
@@ -40,7 +38,7 @@ var kokkaaja = new CookBot("kokkaaja");
 kokkaaja.puhu(); // tulostaa "kokkaaja: beep"
 kokkaaja.kokkaa("lihapullia"); // tulostaa "kokkaaja: kokataas annos lihapullia"
 ```
-Luodaan vielä TuhisBot "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä TuhisBotilta löytyy oma puhu funktionsa. Mikäli TuhisBotilla ei olisi omaa puhu funktiota, etsittäisiin sitä seuraavaksi CookBotilta ja lopuksi Botilta. Mikäli Botillakaan ei olisi puhu funktiota, kyseltäisiin sitä aina ylemmältä tasolta kunnes päästäisiin Objectiin asti ja palautettaisiin undefined.
+Luodaan vielä TuhisBot konstruktorin avulla "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä, koska TuhisBotilta löytyy oma puhu funktionsa. Mikäli TuhisBotilla ei olisi omaa puhu funktiota, etsittäisiin sitä seuraavaksi CookBotilta ja lopuksi Botilta. Mikäli Botillakaan ei olisi puhu funktiota, kyseltäisiin sitä aina ylemmältä tasolta kunnes päästäisiin Objectiin asti ja palautettaisiin undefined.
 ```javascript
 function TuhisBot() {
 	TuhisBot.super_.call(this, 'Tuhis');
@@ -105,7 +103,7 @@ Kyborgi.prototype.constructor = Kyborgi;
 
 ```
 
-Nyt olio pro osaa puhua ja elellä, koska se perii sekä henkilön, että botin. Sen sijaan hauta-olio joka on Henkilöluokan ilmentymä, osaa vain "elellä".
+Nyt "olio" pro osaa puhua ja elellä, koska se perii sekä henkilön, että botin. Sen sijaan hauta-olio joka on Henkilöluokan ilmentymä, osaa vain "elellä".
 ```javascript
 var hauta = new Henkilo('Juho');
 var pro = new Kyborgi('Lalli');
