@@ -60,5 +60,5 @@ TuhisBot.prototype.huuteleLuennolla = function () {
 var tuhis = new TuhisBot("Tuhis");
 tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kannulle"
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
-tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa fakta1"
+tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
