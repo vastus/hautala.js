@@ -75,7 +75,7 @@ console.log(volvo.pyorienmaara); // 6
 volvo.pyorienMaara = 12;
 console.log(volvo.pyorienMaara) // 12
 console.log(new Auto().pyorienMaara); //6
-
+```
 ###Esimerkki 2 Rajapinnan toteutus
 Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot, sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
 ```javascript
