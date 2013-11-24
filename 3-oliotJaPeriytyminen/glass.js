@@ -1,6 +1,6 @@
 'use strict';
 
-var type = require('../lib/index').type;
+var type = require('..').type;
 
 module.exports = (function () {
 	var utils = {};
