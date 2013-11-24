@@ -12,8 +12,8 @@ function cookbot(nimi){
         console.log(nimi+": kokataas annos "+ ruoka);
     }
 }
-
-glass.inherits(bot,cookbot);
+console.log(glass);
+//glass.inherits(bot,cookbot);
 var botti = new bot("es");
 botti.puhu();
 var kokkaaja = new cookbot("kokkaaja");
