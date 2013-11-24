@@ -14,7 +14,7 @@ function Bot(name) {
 
 var botti = new Bot("ropotti");
 
-Bot.prototype.puhu = function() {
+Bot.prototype.puhu = function () {
 	console.log(this.nimi + ": beep");
 };
 
@@ -39,27 +39,26 @@ kokkaaja.kokkaa("lihapullia"); // tulostaa "kokkaaja: kokataas annos lihapullia"
 ```
 Luodaan vielä TuhisBot "olio" joka perii CookBotin ominaisuudet ja sitä kautta myös botin ominaisuudet. Botin ominaisuutta "puhu" ei kuitenkaan käytetä TuhisBotilta löytyy oma puhu funktionsa.
 ```javascript
-function TuhisBot(nimi){
-	TuhisBot.super_.call(this,nimi);
+function TuhisBot(nimi) {
+	TuhisBot.super_.call(this, nimi);
 }
-glass.inherits(TuhisBot,CookBot);
+glass.inherits(TuhisBot, CookBot);
 
-TuhisBot.prototype.puhu = function(lause){
-    console.log(this.nimi+": "+lause);
+TuhisBot.prototype.puhu = function (lause) {
+    console.log(this.nimi + ": " + lause);
 }
-TuhisBot.prototype.huuteleLuennolla = function(){
+TuhisBot.prototype.huuteleLuennolla = function () {
 	var jsfaktat = [
-	"fakta1",
-	"fakta2",
-	"fakta3"
+		'parseInt ottaa toiseksi parametriksi radixin.',
+		'taidat tehdä väärin!',
+		'se ehkä toimaakin.'
 	]
-	console.log(this.nimi + ": Itseasiassa "+ jsfaktat[Math.floor(Math.random()*jsfaktat.length)]);
+	console.log(this.nimi + ": Itse asiassa " + jsfaktat[~~(Math.random() * jsfaktat.length)]);
 }
 
 
-var tuhis = new TuhisBot("Ville");
+var tuhis = new TuhisBot("Tuhis");
 tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kannulle"
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa fakta1"
-``` 
-
+```
