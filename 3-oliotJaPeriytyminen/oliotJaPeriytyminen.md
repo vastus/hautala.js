@@ -3,6 +3,11 @@ Oliot ja periytyminen
 Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 
 ##Periytyminen
+ 
+Vaikka javascriptissä ei olekkaan perinteisiä luokkia, niin javascriptissä oliot koostuvat avain-arvo pareista. Arvoiksi voi tallettaa "mitä tahansa". Olion omien kenttien lisäksi, sillä on myös prototyyppiolionsa kentät.
+
+Prototyyppiolioiden avulla voidaan toteuttaa perintää, joka edesauttaa koodin uudelleenkäyttöä ja täten vähentää myös copypastea. Perintää käyttämällä voidaan selkeyttää ongelman hahmottamista.
+
 ###Esimerkki
 Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana) joka sisältää myös funktiota [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta
 
