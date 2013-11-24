@@ -63,7 +63,7 @@ tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Ville: tulkaa #tkt-node kan
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
-#Esimerkki 2 Prototyypin ja new konstruktorin toimintaa
+###Esimerkki 2 Prototyypin ja new konstruktorin toimintaa
 Vaikka prototyyppiä muuttaisi myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
 ```javascript
 function Auto(){};
