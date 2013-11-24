@@ -1,4 +1,4 @@
-var type = require('../lib/index').type
+var type = require('../lib/index').type;
 module.exports = (function(){
 	 function inherits(ctor, superCtor) {
 	  ctor.super_ = superCtor;
@@ -27,7 +27,7 @@ module.exports = (function(){
 	// olisi function implements mutta implements on reserved word
 	function performs(o, interf){
 		for(var kentta in interf){
-			if(isFunction(kentta){
+			if(type.isFunction(kentta)){
 				if(o.kentta == interf.kentta){
 					return false;
 				}
@@ -36,4 +36,4 @@ module.exports = (function(){
 		return true;
 	}
 	
-}
+})
