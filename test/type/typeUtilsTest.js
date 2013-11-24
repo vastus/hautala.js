@@ -1,3 +1,6 @@
+/*jshint -W053 */
+'use strict';
+
 var assert = require('assert')
 	, type = require('../..').type;
 
@@ -47,7 +50,7 @@ describe('type.is' , function () {
 		assert.throws(function() {
 			type.is(null);
 		});
-	})
+	});
 });
 
 var typeTests = {
@@ -126,7 +129,6 @@ var typeTests = {
 	],
 	'Object': [
 		[{}, true],
-		[Object(), true],
 		['a string', false],
 		[[1,2,3], false]
 	],
@@ -152,7 +154,7 @@ var typeTests = {
 	],
 	'Null': [
 		[null, true],
-		[Object.prototype.__proto__, true],
+		[Object.getPrototypeOf(Object.prototype), true],
 		[undefined, false],
 		[0, false],
 		['a string', false],
