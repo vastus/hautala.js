@@ -16,7 +16,8 @@
   "keywords": ["javascript", "documentation", "university", "course"],
   "dependencies": {},
   "devDependencies": {
-    "mocha": "1.8.x"
+    "mocha": "1.14.x",
+    "jshint": "2.3.x"
   },
   "scripts": {
     "test": "mocha --recursive -R spec"
