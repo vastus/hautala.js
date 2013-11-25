@@ -64,7 +64,7 @@ tuhis.kokkaa("billys pizzaa"); // tulostaa "Ville: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Ville: Itseasiassa taidat tehdä väärin!"
 ```
 ###Esimerkki 2, Prototyypin ja new konstruktorin toimintaa
-Vaikka prototyyppiä muuttaisi myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
+Olion ominaisuuksien tallettaminen prototyyppiin on huomattavasti nopeampaa kun konstruktoriin itseensä, koska sillon funktiota ei jouduta luomaan uudestaan joka ilmentymän kohdalla [lähde+esim](http://blog.trevnorris.com/2013/08/long-live-callbacks.html). Jos prototyyppiä muuttaa myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
 ```javascript
 function Auto(){};
 Auto.prototype.pyorienMaara = 4;
