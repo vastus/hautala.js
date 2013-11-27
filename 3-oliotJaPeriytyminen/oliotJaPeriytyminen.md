@@ -6,7 +6,21 @@ Tekijät: Juho Hautala, Ville Lahdenvuo, Lalli Nuorteva ja Olavi Lintumäki
 Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan helpottaa ongelmien hahmottamista. Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio-objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Prototyyppiketjuja käyttämällä voidaan käyttää perintää. Luokkien toteutuksen yksityiskohdilla on merkitystä nopeuteen, joten siihen kannattaa myös kiinnittää huomiota.
 
 Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana), joka sisältää myös funktioita [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
-###Esimerkki 1, Periytyminen
+
+###Esimerkki 1, Prototyypin ja new konstruktorin toimintaa
+Olion ominaisuuksien tallettaminen prototyyppiin on huomattavasti nopeampaa kun konstruktoriin itseensä, koska sillon funktiota ei jouduta luomaan uudestaan joka ilmentymän kohdalla [lähde+esim](http://blog.trevnorris.com/2013/08/long-live-callbacks.html). Jos prototyyppiä muuttaa myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
+```javascript
+function Auto(){};
+Auto.prototype.pyorienMaara = 4;
+var volvo = new Auto();
+console.log(volvo.pyorienMaara); // 4
+Auto.prototype.pyorienMaara = 6;
+console.log(volvo.pyorienmaara); // 6
+volvo.pyorienMaara = 12;
+console.log(volvo.pyorienMaara) // 12
+console.log(new Auto().pyorienMaara); //6
+```
+###Esimerkki 2, Periytyminen
 
 Luodaan ensin konstruktorifunktio Bot, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
 ```javascript
@@ -62,19 +76,6 @@ var tuhis = new TuhisBot();
 tuhis.puhu("tulkaa #tkt-node kannulle"); //tulostaa "Tuhis: tulkaa #tkt-node kannulle"
 tuhis.kokkaa("billys pizzaa"); // tulostaa "Tuhis: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Tuhis: Itseasiassa taidat tehdä väärin!"
-```
-###Esimerkki 2, Prototyypin ja new konstruktorin toimintaa
-Olion ominaisuuksien tallettaminen prototyyppiin on huomattavasti nopeampaa kun konstruktoriin itseensä, koska sillon funktiota ei jouduta luomaan uudestaan joka ilmentymän kohdalla [lähde+esim](http://blog.trevnorris.com/2013/08/long-live-callbacks.html). Jos prototyyppiä muuttaa myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
-```javascript
-function Auto(){};
-Auto.prototype.pyorienMaara = 4;
-var volvo = new Auto();
-console.log(volvo.pyorienMaara); // 4
-Auto.prototype.pyorienMaara = 6;
-console.log(volvo.pyorienmaara); // 6
-volvo.pyorienMaara = 12;
-console.log(volvo.pyorienMaara) // 12
-console.log(new Auto().pyorienMaara); //6
 ```
 ###Esimerkki 3, Rajapinnan toteutus
 Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot. Sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
