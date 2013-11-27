@@ -49,5 +49,7 @@ module.exports = (function () {
 	utils.extend = extend;
 	utils.performs = performs;
 
+	Object.freeze(utils);
+
 	return utils;
 })();
