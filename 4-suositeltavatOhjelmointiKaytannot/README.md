@@ -17,10 +17,10 @@
 		- [Poikkeukset](#poikkeukset)
 - [Oliot ja periytyminen](#oliot-ja-periytyminen)
 	- [Periytyminen](#periytyminen)
-		- [Esimerkki 1, Prototyypin ja new konstruktorin toimintaa](#esimerkki-1-prototyypin-ja-new-konstruktorin-toimintaa)
-		- [Esimerkki 2, Periytyminen](#esimerkki-2-periytyminen)
-		- [Esimerkki 3, Rajapinnan toteutus](#esimerkki-3-rajapinnan-toteutus)
-		- [Esimerkki 4, Moniperintä](#esimerkki-4-moniperintä)
+		- [Prototyypin ja new konstruktorin toimintaa](#prototyypin-ja-new-konstruktorin-toimintaa)
+		- [Periytyminen](#periytyminen-1)
+		- [Rajapinnan toteutus](#rajapinnan-toteutus)
+		- [Moniperintä](#moniperintä)
 
 # Tyyppiturvallisuus
 
@@ -167,7 +167,7 @@ Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea
 
 Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana), joka sisältää myös funktioita [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
 
-### Esimerkki 1, Prototyypin ja new konstruktorin toimintaa
+### Prototyypin ja new konstruktorin toimintaa
 
 Olion ominaisuuksien tallettaminen prototyyppiin on huomattavasti nopeampaa kun konstruktoriin itseensä, koska sillon funktiota ei jouduta luomaan uudestaan joka ilmentymän kohdalla [lähde+esim](http://blog.trevnorris.com/2013/08/long-live-callbacks.html). Jos prototyyppiä muuttaa myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
 ```javascript
@@ -181,7 +181,8 @@ volvo.pyorienMaara = 12;
 console.log(volvo.pyorienMaara) // 12
 console.log(new Auto().pyorienMaara); //6
 ```
-### Esimerkki 2, Periytyminen
+
+### Periytyminen
 
 Luodaan ensin konstruktorifunktio Bot, jonka jälkeen luodaan sen ilmentymä botti"olio" joka saa konstruktoriltaan funktion "puhu".
 ```javascript
@@ -241,7 +242,7 @@ tuhis.kokkaa("billys pizzaa"); // tulostaa "Tuhis: kokataas annos billys pizzaa"
 tuhis.huuteleLuennolla(); // tulostaa esim: "Tuhis: Itseasiassa taidat tehdä väärin!"
 ```
 
-### Esimerkki 3, Rajapinnan toteutus
+### Rajapinnan toteutus
 
 Apina toteuttaa rajapinnan Bot koska sillä on kaikki tarvittavat funktiot. Sen sijaan kivi ei toteuta, koska kivellä ei ole funktiota puhu.
 
@@ -259,7 +260,7 @@ glass.performs(kivi, Bot); // false
 glass.performs(apina, Bot); //true
 ```
 
-### Esimerkki 4, Moniperintä
+### Moniperintä
 
 "Luokat" henkilö ja kyborgi toutettaa funktion "elele". Lisäksi kyborgi perii myös botin ominaisuudet. Jos Botilla ja Henkilöllä olisi molemmilla funktio puhu(), kyborgille jäisi voimaan se puhu(), kumpi on myöhemmin peritty(=asetettu). 
 
