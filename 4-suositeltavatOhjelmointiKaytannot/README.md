@@ -5,9 +5,16 @@
 - [Tyyppiturvallisuus](#tyyppiturvallisuus)
 	- [Johdanto](#johdanto)
 	- [Työkalujen esittely [typeUtils.js](./typeUtils.js)](#työkalujen-esittely-typeutilsjstypeutilsjs)
-	- [1.2 Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)](#12-testit-typeutilstestjstesttypetypeutilstestjs)
-	- [1.3 Pohdintaa](#13-pohdintaa)
-	- [1.4 Muuta](#14-muuta)
+	- [Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)](#testit-typeutilstestjstesttypetypeutilstestjs)
+	- [Pohdintaa](#pohdintaa)
+	- [Muuta](#muuta)
+- [Käytäntöjä](#käytäntöjä)
+	- [Johdanto](#johdanto-1)
+	- [Pohdintaa ja materiaalia](#pohdintaa-ja-materiaalia)
+	- [Käytännöt](#käytännöt)
+		- [Tyypit, funktiot ja funktionaalisuus](#tyypit-funktiot-ja-funktionaalisuus)
+		- [Sulkeumat](#sulkeumat)
+		- [Poikkeukset](#poikkeukset)
 
 # Tyyppiturvallisuus
 
