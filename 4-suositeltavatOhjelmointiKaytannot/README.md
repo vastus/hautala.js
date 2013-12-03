@@ -1,4 +1,4 @@
-# JavaScript &mdash; Suositeltavia ohjelmointikäytäntöjä
+# JavaScript &mdash; Hyvät ohjelmointikäytännöt
 
 ## Sisältö
 
