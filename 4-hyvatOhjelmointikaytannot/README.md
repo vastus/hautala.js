@@ -32,9 +32,9 @@ todennäköisemmin kuin paljastettujen funktioiden.
 
     var type = (function () { return { ... }; })(errorHandler);
 
-`errorHandler` on vapaaehtoinen virheenkäsittelijä, jos jokin funktio heittää poikkeuksen, se kutsuu errorHandleria virheoliolla, jonka voi sitten lokittaa tai heittää. Esimerkiksi kehitysympäristössä kannattaa heittää ja tuotantoympäristössä lokittaa. Jos errorHandleria ei anna, se oletuksena vain heittää poikkeuksen.
+`errorHandler` on vapaaehtoinen virheenkäsittelijä, jos jokin funktio heittää poikkeuksen, se kutsuu errorHandleria virheoliolla, jonka voi sitten lokittaa tai heittää. Esimerkiksi kehitysympäristössä kannattaa heittää ja tuotantoympäristössä lokittaa. Jos errorHandleria ei anna, se oletuksena vain heittää poikkeuksen. Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
 
-Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
+Kannatamme kirjastojen käyttöä ennemmin kuin suoraan `typeof muuttuja`, koska se ei tunnista tyyppiä oikein esimerkiksi, jos se on luotu konstruktorifunktiolla: `typeof new String("lol") === "object"`. Toki tuo on hyvien ohjelmointikäytäntöjen vastaista ja siitä pääsee eroon esimerkiksi [jshint](http://www.jshint.com/)-työkalulla.
 
 ## Työkalujen esittely [typeUtils.js](https://github.com/vastus/hautala.js/blob/master/1-tyyppiturvallisuus/typeUtils.js)
 
