@@ -17,6 +17,7 @@
 		- [Poikkeukset](#poikkeukset)
 - [Oliot ja periytyminen](#oliot-ja-periytyminen)
 	- [Periytyminen](#periytyminen)
+	- [Työkalujen esittely glass.js](#ty%C3%B6kalujen-esittely-glassjs)
 		- [Prototyypin ja new konstruktorin toimintaa](#prototyypin-ja-new-konstruktorin-toimintaa)
 		- [Periytyminen](#periytyminen-1)
 		- [Rajapinnan toteutus](#rajapinnan-toteutus)
