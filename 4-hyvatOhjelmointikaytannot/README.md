@@ -4,8 +4,8 @@
 
 - [Tyyppiturvallisuus](#tyyppiturvallisuus)
 	- [Johdanto](#johdanto)
-	- [Työkalujen esittely typeUtils.js](#työkalujen-esittely-typeutilsjstypeutilsjs)
-	- [Testit typeUtilsTest.js](#testit-typeutilstestjstesttypetypeutilstestjs)
+	- [Työkalujen esittely typeUtils.js](#ty%C3%B6kalujen-esittely-typeutilsjs)
+		- [Testit typeUtilsTest.js](#testit-typeutilstestjs)
 	- [Pohdintaa](#pohdintaa)
 	- [Muuta](#muuta)
 - [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#algoritmit-funktiot-ja-sulkeumat--poikkeusten-käsittely)
@@ -52,7 +52,7 @@ Kannatamme kirjastojen käyttöä ennemmin kuin suoraan `typeof muuttuja`, koska
     * Hyödyllisin parametrien validointiin: `type.check(arguments, 'String', 'RegExp')`
   * `type.checkOptional` toimii kuten `check`, mutta tarkistaa vain annettujen arvojen tyypit.
 
-## Testit [typeUtilsTest.js](https://github.com/vastus/hautala.js/blob/master/test/type/typeUtilsTest.js)
+### Testit [typeUtilsTest.js](https://github.com/vastus/hautala.js/blob/master/test/type/typeUtilsTest.js)
 
 Muutama testi, jotka demonstroivat kirjaston toimintaa. Suoritus: `npm install && npm test`.
 
