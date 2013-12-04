@@ -1,5 +1,7 @@
 # JavaScript &mdash; Hyvät ohjelmointikäytännöt
 
+Tekijät: Ville Lahdenvuo, Juho Hautala, Olavi Lintumäki ja Lalli Nuorteva.
+
 ## Sisältö
 
 - [Tyyppiturvallisuus](#tyyppiturvallisuus)
