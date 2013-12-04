@@ -8,7 +8,7 @@
 	- [Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)](#testit-typeutilstestjstesttypetypeutilstestjs)
 	- [Pohdintaa](#pohdintaa)
 	- [Muuta](#muuta)
-- [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#käytäntöjä)
+- [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#algoritmit-funktiot-ja-sulkeumat--poikkeusten-käsittely)
 	- [Johdanto](#johdanto-1)
 	- [Pohdintaa ja materiaalia](#pohdintaa-ja-materiaalia)
 	- [Käytännöt](#käytännöt)
