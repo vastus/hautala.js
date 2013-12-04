@@ -173,6 +173,7 @@ Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen to
   * Näin superin konstruktorille voi välittää parametrejä näin: `Konstruktori.super_.call(this, param1, param2);`
 * `extends(lähde, o1, o2, ...)` toimii siten, että sille annetaan kaksi tai useampi objekti, ja lähteeseen lisätään myöhempien objektien kentät siinä järjestyksessä kuin ne on annetti, esimerkiksi `o2`:n kentät ylikirjoittavat `o1`:n ja lähteen kentät.
   * Tätä voi hyödyntää mixin-tyyppisessä moniperinnässä, jossa prototyyppejä laajennetaan muiden olioiden prototyypeillä.
+* `performs(objekti, rajapinta)` tarkistaa toteuttaako objekti kaikki funktiot, mitä rajapinnassa on. Tällä voi simuloida Javan rajapintoja. Esim. `performs(console, { log: function(){} }) === true`, sillä console.log on funktio.
 
 ### Prototyypin ja new konstruktorin toimintaa
 
