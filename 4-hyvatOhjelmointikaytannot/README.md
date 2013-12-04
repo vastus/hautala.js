@@ -4,8 +4,8 @@
 
 - [Tyyppiturvallisuus](#tyyppiturvallisuus)
 	- [Johdanto](#johdanto)
-	- [Työkalujen esittely [typeUtils.js](./typeUtils.js)](#työkalujen-esittely-typeutilsjstypeutilsjs)
-	- [Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)](#testit-typeutilstestjstesttypetypeutilstestjs)
+	- [Työkalujen esittely typeUtils.js](#työkalujen-esittely-typeutilsjstypeutilsjs)
+	- [Testit typeUtilsTest.js](#testit-typeutilstestjstesttypetypeutilstestjs)
 	- [Pohdintaa](#pohdintaa)
 	- [Muuta](#muuta)
 - [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#algoritmit-funktiot-ja-sulkeumat--poikkeusten-käsittely)
