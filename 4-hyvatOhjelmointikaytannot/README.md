@@ -167,6 +167,11 @@ Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea
 
 Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](https://github.com/vastus/hautala.js/blob/master/3-oliotJaPeriytyminen/glass.js) kirjastoamme (class on varattu sana), joka sisältää myös funktioita [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
 
+## Työkalujen esittely [glass.js](https://github.com/vastus/hautala.js/blob/master/3-oliotJaPeriytyminen/glass.js)
+
+* `inherits(konstruktori, super)` toimii siten, että se lisää konstruktorille `super_`-kentän, joka viittaa super-parametriin. Konstruktorin prototyypiksi luodaan uusi objekti `Object.create`-funktiolla, jolle annetaan prototyypiksi superin prototyyppi ja sinne lisätään `constructor`-kenttä, jonka arvoksi laitetaan konstruktori
+  * Näin superin konstruktorille voi välittää parametrejä näin: `Konstruktori.super_.call(this, param1, param2);`
+
 ### Prototyypin ja new konstruktorin toimintaa
 
 Olion ominaisuuksien tallettaminen prototyyppiin on huomattavasti nopeampaa kun konstruktoriin itseensä, koska sillon funktiota ei jouduta luomaan uudestaan joka ilmentymän kohdalla [lähde+esim](http://blog.trevnorris.com/2013/08/long-live-callbacks.html). Jos prototyyppiä muuttaa myöhemmin, se silti vaikuttaa myös jo aiemmin luotuihin ilmentymiin. Toisaalta prototyypin arvon voi myös ylikirjoittaa antamalla ilmentymälle oma arvonsa. Ilmentymään tehty ylikirjoitus ei vaikuta uusiin ilmentymiin. Alla esimerkki selkeyttämiseksi.
