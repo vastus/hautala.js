@@ -171,6 +171,8 @@ Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen to
 
 * `inherits(konstruktori, super)` toimii siten, että se lisää konstruktorille `super_`-kentän, joka viittaa super-parametriin. Konstruktorin prototyypiksi luodaan uusi objekti `Object.create`-funktiolla, jolle annetaan prototyypiksi superin prototyyppi ja sinne lisätään `constructor`-kenttä, jonka arvoksi laitetaan konstruktori
   * Näin superin konstruktorille voi välittää parametrejä näin: `Konstruktori.super_.call(this, param1, param2);`
+* `extends(lähde, o1, o2, ...)` toimii siten, että sille annetaan kaksi tai useampi objekti, ja lähteeseen lisätään myöhempien objektien kentät siinä järjestyksessä kuin ne on annetti, esimerkiksi `o2`:n kentät ylikirjoittavat `o1`:n ja lähteen kentät.
+  * Tätä voi hyödyntää mixin-tyyppisessä moniperinnässä, jossa prototyyppejä laajennetaan muiden olioiden prototyypeillä.
 
 ### Prototyypin ja new konstruktorin toimintaa
 
