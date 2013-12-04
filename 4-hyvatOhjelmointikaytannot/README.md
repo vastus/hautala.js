@@ -36,7 +36,7 @@ todennäköisemmin kuin paljastettujen funktioiden.
 
 Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välineitä.
 
-## Työkalujen esittely [typeUtils.js](./typeUtils.js)
+## Työkalujen esittely [typeUtils.js](https://github.com/vastus/hautala.js/blob/master/1-tyyppiturvallisuus/typeUtils.js)
 
   * `type.is('tyyppi', muuttuja)` palauttaa `true`, jos "muuttujan tyyppi" eli sen arvon tyyppi on annettu tyyppi, muutoin `false`.
     * Esimerkki: `type.is('Number', 123)`
@@ -51,7 +51,7 @@ Lisäksi kirjasto hyödyntää uusia `"use strict;"` ja `Object.freeze()` välin
     * Hyödyllisin parametrien validointiin: `type.check(arguments, 'String', 'RegExp')`
   * `type.checkOptional` toimii kuten `check`, mutta tarkistaa vain annettujen arvojen tyypit.
 
-## Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)
+## Testit [typeUtilsTest.js](https://github.com/vastus/hautala.js/blob/master/test/type/typeUtilsTest.js)
 
 Muutama testi, jotka demonstroivat kirjaston toimintaa. Suoritus: `npm install && npm test`.
 
@@ -132,13 +132,13 @@ Jos funktionaalisesta koodista loppuu teho, usein kutsutuista osista voi luoda e
 
 Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden ensiluokkaisuus tarjoaa sen verran käteviä välineitä. Kannattaa hyödyntää, mitä on tarjolla, mutta pitää silmä tarkkana tyypeille siellä, missä sillä on eniten väliä. Raskaassa koodissa tarkkuus tyyppien kanssa on tärkeää tehokkuuden kannalta ja rennommassa koodissa taas yhteensopivuuden kannalta.
 
-Esimerkkejä [functionalExamples.js](./functionalExamples.js).
+Esimerkkejä [functionalExamples.js](https://github.com/vastus/hautala.js/blob/master/2-typesAndConventions/functionalExamples.js).
 
 ### Sulkeumat
 
 Sulkeumia kannattaa pääsääntöisesti käyttää siellä, missä voi, kunhan ei mene hirmuiseksi kikkailuksi. Se lisää turvallisuutta piilottamalla tilan ja apufunktiot näkymättömiin. Vaarana näiden kanssa on sykliset riippuvuudet, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
 
-Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto: a) [typeUtils.js](../1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](../test/type/typeUtilsTest.js)
+Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto: a) [typeUtils.js](https://github.com/vastus/hautala.js/blob/master/1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](https://github.com/vastus/hautala.js/blob/master/test/type/typeUtilsTest.js)
 
 ### Poikkeukset
 
@@ -165,7 +165,7 @@ Tehokkuuden kannalta poikkeukset eivät ole niin hyvä juttu, sillä niiden opti
 
 Periytyminen edesauttaa koodin uudelleenkäyttöä, sekä vähentää copypastea. Perintää käyttämällä voidaan helpottaa ongelmien hahmottamista. Javascriptissä ei ole perinteisiä luokkia, vaan ns. luokat ovat funktio-objekteja. Kun objektista luodaan uusi ilmentymä käyttämällä new etuliitettä, uuteen ilmentymään liitetään prototype-kenttä josta löytyy kaikki prototyypin kentät. Prototyyppiketjuja käyttämällä voidaan käyttää perintää. Luokkien toteutuksen yksityiskohdilla on merkitystä nopeuteen, joten siihen kannattaa myös kiinnittää huomiota.
 
-Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](glass.js) kirjastoamme (class on varattu sana), joka sisältää myös funktioita [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
+Alla olevissa esimerkeissä käydään lisää läpi sitä miten periytyminen toimii erilaisissa tilanteissa. Esimerkit käyttää [glass.js](https://github.com/vastus/hautala.js/blob/master/3-oliotJaPeriytyminen/glass.js) kirjastoamme (class on varattu sana), joka sisältää myös funktioita [noden](https://github.com/joyent/node/blob/master/lib/util.js#L566-L576) coresta.
 
 ### Prototyypin ja new konstruktorin toimintaa
 
