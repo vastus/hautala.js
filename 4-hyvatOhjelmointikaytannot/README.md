@@ -8,7 +8,7 @@
 	- [Testit [typeUtilsTest.js](../test/type/typeUtilsTest.js)](#testit-typeutilstestjstesttypetypeutilstestjs)
 	- [Pohdintaa](#pohdintaa)
 	- [Muuta](#muuta)
-- [Käytäntöjä](#käytäntöjä)
+- [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#käytäntöjä)
 	- [Johdanto](#johdanto-1)
 	- [Pohdintaa ja materiaalia](#pohdintaa-ja-materiaalia)
 	- [Käytännöt](#käytännöt)
@@ -87,7 +87,7 @@ Linkkejä:
   * http://www.typescriptlang.org/Tutorial/
 
 
-# Käytäntöjä
+# Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely
 
 ## Johdanto
 
