@@ -12,7 +12,7 @@ Tekijät: Ville Lahdenvuo, Juho Hautala, Olavi Lintumäki ja Lalli Nuorteva.
 	- [Muuta](#muuta)
 - [Algoritmit, funktiot ja sulkeumat & poikkeusten käsittely](#algoritmit-funktiot-ja-sulkeumat--poikkeusten-käsittely)
 	- [Johdanto](#johdanto-1)
-	- [Pohdintaa ja materiaalia](#pohdintaa-ja-materiaalia)
+	- [Materiaalia](#materiaalia)
 	- [Käytännöt](#käytännöt)
 		- [Tyypit, funktiot ja funktionaalisuus](#tyypit-funktiot-ja-funktionaalisuus)
 		- [Sulkeumat](#sulkeumat)
@@ -94,54 +94,58 @@ Linkkejä:
 
 ## Johdanto
 
-JavaScriptissä näyttäisi vaikuttavan ainakin kaksi eri suuntausta tyypityksen ja algoritmien muodostuksen suhteen. 
-Toinen on tehokkuuteen, turvallisuuteen ja yllätyksettömyyteen pyrkivä, ja toinen
-tyyppien suhteen vapaampi suuntaus, jonka uhreihin kuuluu muunmuassa 
-funktionaalinen tyyli, joka kuitenkin vaikuttaa pärjäävän ihan hyvin.
-Toisaalta on kivaa saada nopeasti aikaan nätihköä ja toimivaa koodia,
-mutta toisaalta tämmöinen koodi voi olla järjenvastaisen hidasta joissain tapauksissa.
+On erilaisia näkökulmia JavaScriptin tyyppiturvallisuuteen ja konventioihin. Näitä ovat muunmuassa tehokkuus ja nopeus, ylläpidettävyys, sujuvuus ja kehitysnopeus, turvallisuus, sekä myös syntyvän koodin määrä. Näiden suhteen on erilaisia suuntauksia, jotka pitävät eri asioita tärkeinä. Yhdessä ideassa pitäytyminen ei tietenkään ole ehdotonta, sillä olosuhteita on monenlaisia, mutta esitämme muutamia suosituksia.
 
-JavaScript-engineiden(lähinnä V8 tämän ryhmän näkökulmasta) nykyinen 
-kehitys tuntuu ohjaavan tehokkuuden kannalta tyyppiturvallisen 
-javascriptin suuntaan, ja tämän voi ottaa huomioon myös funktionaalisessa
-tyylissä, joskin hieman vaivalloisesti. Tällä kertaa keskitymme siis melko läheisesti tehokkuuteen.
+Keskitymme pääasiassa nopeuteen, koska sillä on suuri paino palvelinpuolen ohjelmistossa, peleissä ja pikkasenkin raskaammissa web-sovelluksissa. Kiinnitämme hiukan huomiota myös yhteensopivuuteen ja ylläpidettävyyteen. 
 
-Poikkeukset asettuvat jokseenkin välimaastoon tehokkuuden ja 
-tyyppiturvallisuuden välillä. Poikkeukset eivät optimoidu hyvin, mutta
-tyyppikäytänteistä kiinni pitäminen tekee kaikesta mukavampaa.
+Nopeuden kannalta nykyisten JavaScript-moottorien kehitys ohjaa vahvasti tyyppiturvallisuuden, tai ehkäpä ennemmin tyyppivarovaisuuden suuntaan. Toisaalta esimerkiksi poikkeukset eivät välttämättä optimoidu kovin hyvin, mutta tyyppikäytänteistä kiinni pitäminen niiden kanssa on muuten järkevää, joten pidämme niitä suuressa arvossa.
 
-Sulkeumien hyödyntäminen menee hiukan sivuun tehokkuuden ja dynaamisuuden
-akselilta, mutta niidenkin käyttöön on syytä perehtyä, sillä niillä 
-saadaan aikaan turvallisempaa ja siistimpää koodia.
+Myös funktionaalisella tyylillä on paikkansa selkeyden ja ylläpidettävyyden kannalta, mutta kannattaa olla tietoinen siitä, mitä etuja sillä on tai siltä puuttuu javascriptissä. Koska on tyhmää optimoida liian aikaisin, kannattaa tietenkin valita selkeämpi vaihtoehto silloin, kun siitä ei ole ilmeistä haittaa. Kannatamme kuitenkin käytänteitä ja vihjeitä, jotka ohjaavat tehokkaampaan suuntaan.
 
-## Pohdintaa ja materiaalia
+Sulkeumat myöskin liittyvät tehokkuuteen, ylläpidettävyyteen, sekä turvallisuuteen. Turvallisuuteen ja ylläpidettävyyteen sen puolesta, että niillä voi parantaa molempia ja tehokkuuteen taas sen puolesta, että ne vievät ylimääräistä muistia ja ovat hitaampia luoda. Sulkeumien kanssa olisi hyvä löytää tapauskohtainen kompromissi, jos välittää tehokkuudesta.
 
-JavaScript on potentiaalisesti hyvinkin nopea kieli, mutta sen dynaamisuus taistelee voimakkaasti tätä ominaisuutta vastaan. Mitä parempi käsitys tulkilla on tyypeistä, sitä paremmin se pystyy pitämään koodin tehokkaana. Pienilläkin poikkeamilla voi olla suuri vaikutus nopeuteen.
+## Materiaalia
+
+JavaScript on potentiaalisesti hyvinkin nopea kieli, mutta kaikki huomioonotettava dynaamisuudessa taistelee voimakkaasti tätä ominaisuutta vastaan. Mitä parempi käsitys tulkilla on tyypeistä, sitä paremmin se pystyy pitämään koodin tehokkaana. Pienilläkin poikkeamilla voi olla suuri vaikutus nopeuteen.
 * kattava esimerkki kiinnostuneille: http://www.html5rocks.com/en/tutorials/performance/mystery/
 * toinen esimerkki: http://n64js.blogspot.fi/2012/08/javascript-optimisation-primer.html
-
-Funktiosta kannattaa mieluummin olla useampi kopio eri tapauksille, kuin kutsuisi samaa funktiota eri tyyppisillä parametreilla. Tämä voi olla kova pala funktionaalisessa ohjelmoinnissa, mutta ei nopeus aina ole tärkein.
-  * Nopeustesti: http://jsperf.com/mixing-boolean-and-int n64js blogista
-  * Sisäisesti v8 esimerkiksi optimoi tyypeille paljon speksiä tarkemmin, jolloin olion asiaan liittymänkin kentän muuttaminen voi aiheuttaa merkittävää hidastumista http://www.html5rocks.com/en/tutorials/speed/v8/
-
-Funktionaalinen ohjelmointi on paikallaan silloin, kun se ajaa asiansa siististi ilman, että siitä aiheutuu nopeushaittaa. Rinnakkaistamisessa siitä ei varsinaisesti ole etua, sillä useimmat javascript-toteutukset ovat yksisäikeisiä. Muutamat sisäänrakennetut funktionaalisen ohjelmoinnin apufunktiot saattavat hieman kiertää optimoituvuus-ongelmaa funktionaalisen ohjelmoinnin hyväksi.
+* Nopeustesti tyyppien poikkeamisesta: http://jsperf.com/mixing-boolean-and-int n64js blogista
+* Sisäisesti v8 esimerkiksi optimoi tyypeille paljon speksiä tarkemmin, jolloin olion asiaan liittymänkin kentän muuttaminen voi aiheuttaa merkittävää hidastumista http://www.html5rocks.com/en/tutorials/speed/v8/
+* http://coding.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/
+* http://mrale.ph/blog/2011/12/18/v8-optimization-checklist.html
 
 ## Käytännöt
 
 ### Tyypit, funktiot ja funktionaalisuus
 
-Tyyppiturvallisuuteen kannattaa käyttää viimeviikkoisia tarkistusfunktioita, sekä lisäksi muutamaa konversionpakotuskikkaa/funktiota tehokkuuden vuoksi. Konversionpakotus(kuten nopeustestissä) estää funktiota deoptimoitumasta uudentyyppisellä parametrilla muutamassa tapauksessa. Varsinkin usein käytettävät yleis/apufunktiot ovat vaarassa. 
-Jos funktionaalisesta koodista loppuu teho, usein kutsutuista osista voi luoda eri tyypeille omat kopionsa, jolloin optimointeja ei heitetä hukkaan. Funktionaalisen ohjelmoinnin perään haikailevat voivat tutustua [underscore.js](http://underscorejs.org/)-kirjastoon.
+Tyyppiturvallisuuteen suosittelemme avuksi tyyppivarovaisuutta, tai esimerkiksi edellisen luvun tarkistusfunktioita, jos on kyse kirjaston koodauksesta, tai tyyppejä on muuten vaikea ennustaa. Tyyppivarovaisuudella tarkoitamme sitä, että kiinnitetään huomiota, mitä tyyppejä funktiot ja tieto saa, ettei niissä ilmene turhaa vaihtelua. Eräs tapa tähän on konversionpakotus(kuten nopeustestissä), jolla funktioon päästetään vaan haluttua tyyppiä. Varsinkin usein käytettävät yleis/apufunktiot ovat vaarassa. 
 
-Täysin javamaiseen koodiin ei kannata pyrkiä, sillä esimerkiksi funktioiden ensiluokkaisuus tarjoaa sen verran käteviä välineitä. Kannattaa hyödyntää, mitä on tarjolla, mutta pitää silmä tarkkana tyypeille siellä, missä sillä on eniten väliä. Raskaassa koodissa tarkkuus tyyppien kanssa on tärkeää tehokkuuden kannalta ja rennommassa koodissa taas yhteensopivuuden kannalta.
+Funktiot ja oliot kannattaa pitää lyhyinä, koska silloin tyypit pysyvät paremmin hallussa ja optimointi on moottorille helpompaa. Myös koodi pysyy ylläpidettävämpänä, eikä ylimääräsistä funktiokutsuista ole välttämättä haittaa, sillä ne voivat optimoitua pois, jos ei käytä sulkeumia. 
 
-Esimerkkejä [functionalExamples.js](https://github.com/vastus/hautala.js/blob/master/2-typesAndConventions/functionalExamples.js).
+Hankalempien funktioiden optimointiyrityksestä saatetaan jopa luopua, mikäli tyypit vaihtelevat liikaa, jolloin (ainakin v8:ssa, Googlen Javascript-moottorissa) tilalle jää kaiken varmistava hidas versio, joka vieläpä varaa muistia erikseen jokaiselle välitulokselle. Funktionaalisen koodin funktioiden uudelleenkäyttö voi tuottaa optimoijalle tällaisia pettymyksiä ja voi saada sen lopulta kokonaan luovuttamaan optimoinnin, mutta tästä pitäisi selvitä tyyppivarovaisuudella. Jos koodista loppuu teho, usein kutsutuista osista voi hätätapauksessa luoda eri tyypeille omat kopionsa, jolloin optimointeja ei tarvi heittää hukkaan tyyppien vaihtumisen vuoksi. 
+
+Jos kapseloinnista ei ole turvallisuuden kannalta merkitystä, voi olla syytä jättää se väliin, sillä kyse voi olla monikymmenkertaisesta nopeuserosta(lähde katosi, mutta vektorien käsittely nopeutui nodella kymmenistä sekunneista alle kahteen sekuntiin vaihtamalla sulkeumasta olion paikalliseen muuttujaan tai jotain sinneppäin)
+
+Funktionaalisen ohjelmoinnin perään olevat voivat tutustua [lazy.js](http://danieltao.com/lazy.js/comparisons.html)-kirjastoon, joka ainakin omien, mutta reilulta vaikuttavien testiensä mukaan vaikuttaa nopeudeltaan ylivoimaiselta.
+Myös:
+* http://adamnengland.wordpress.com/2013/10/10/benchmarks-underscore-js-vs-lodash-js-vs-lazy-js/
+* http://net.tutsplus.com/tutorials/javascript-ajax/getting-cozy-with-underscore-js/
+
+Täysin javamaiseen koodiin ei kannata pyrkiä, vaikka pystyisi, sillä esimerkiksi funktioiden ensiluokkaisuus tarjoaa sen verran käteviä välineitä. Kannattaa hyödyntää, mitä on tarjolla, mutta pitää silmä tarkkana tyypeille siellä, missä sillä on eniten väliä. Raskaassa koodissa tarkkuus tyyppien kanssa on tärkeää tehokkuuden kannalta ja rennommassa koodissa taas yhteensopivuuden kannalta.
+
+Funktionaalinen ohjelmointi on paikallaan silloin, kun se ajaa asiansa siististi ilman, että siitä aiheutuu nopeushaittaa. Rinnakkaistamisessa siitä ei varsinaisesti ole etua, sillä useimmat javascript-toteutukset ovat yksisäikeisiä, mutta laiskuus on varsin tervetullut apu. Lisäksi nykytoteutusten muutamat sisäänrakennetut funktionaalisen ohjelmoinnin funktiot saattavat hieman kiertää optimoituvuus-ongelmaa funktionaalisen ohjelmoinnin hyväksi.
+
+
+[esimerkkejä](./functionalExamples.js)
+
 
 ### Sulkeumat
+Sulkeumia kannattaa käyttää siellä, missä niistä ei ole nopeuden kannalta haittaa, mutta niistä on muuta hyötyä. Ne lisäävät turvallisuutta piilottamalla tilan ja apufunktiot muiden saavuttamattomiin. 
+Usein luotavilla olioilla sulkeumista voi olla paljonkin haittaa nopeudelle. Vaarana näiden kanssa on myös sykliset riippuvuudet DOMin kanssa, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
 
-Sulkeumia kannattaa pääsääntöisesti käyttää siellä, missä voi, kunhan ei mene hirmuiseksi kikkailuksi. Se lisää turvallisuutta piilottamalla tilan ja apufunktiot näkymättömiin. Vaarana näiden kanssa on sykliset riippuvuudet, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
+Sulkeuma on hyvä varsinkin moduuleissa, sillä niitä ei tarvi luoda paljoa ja niiden kanssa turvallisuudella on merkitystäkin. Kertakäyttöiset sulkeumat kannattaa kuitenkin yleensä optimoida pois korvaamalla ne parametrinvälityksellä.
 
-Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto: a) [typeUtils.js](https://github.com/vastus/hautala.js/blob/master/1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](https://github.com/vastus/hautala.js/blob/master/test/type/typeUtilsTest.js)
+Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto, joka on moduuli: a) [typeUtils.js](../1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](../test/type/typeUtilsTest.js)
 
 ### Poikkeukset
 
@@ -154,12 +158,12 @@ Tätä metodia kannattaa noudattaa varsinkin kirjastoissa.
 Yksi JavaScriptin ongelmista on se, että poikkeusten stack trace on yleensä hyvin lyhyt.
 Tämä johtuu siitä, että koodi on eventtipohjaista.
 Koodi suoritetaan vain, jos tulee joku tapahtuma, kuten hiiren klikkaus tai AJAX-takaisinkutsu.
-V8-moottorista löytyy tähänkin ratkaisu: [long stack traces](https://github.com/tlrobinson/long-stack-traces).
+V8-moottorista löytyy tähänkin ratkaisu: [long stack traces](https://github.com/tlrobinson/long-stack-traces)
 
 Yksi ongelma stack tracejen kanssa on anonyymit funktiot, niitä ei ole kiva debuggailla.
 On hyvä idea antaa anonyymeillekin funktioille nimet: `array.forEach(function each() { ...});`. Näin stack tracessa näkyy funktion nimi.
 
-Tehokkuuden kannalta poikkeukset eivät ole niin hyvä juttu, sillä niiden optimointi on vaikeampaa, joten tämän käytännön rinnalle suositamme defensiivistä strategiaa, joka suojautuu virhetilanteilta aikaisessa vaiheessa esimerkiksi viimeviikon tyyppitarkistustyökaluilla.
+Tehokkuuden kannalta poikkeukset eivät ole niin hyvä juttu, sillä niiden optimointi on vaikeampaa, eikä niin kehittynyttä, joten tämän käytännön rinnalle suositamme defensiivistä strategiaa, joka suojautuu virhetilanteilta aikaisessa vaiheessa, esimerkiksi viimeviikon tyyppitarkistustyökaluilla.
 
 
 # Oliot ja periytyminen
