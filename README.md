@@ -16,3 +16,5 @@ TKTL:n kurssin Ohjelmointitekniikka (JavaScript) laskuharjoitusryhmä Hautala.
 ## Viikko 2: [käytäntöjä](./2-typesAndConventions/README.md)
 
 ## Viikko 3: [oliot ja periytyminen](./3-oliotJaPeriytyminen/README.md)
+
+## Viikko 4: [Hyvät Ohjelmointikäytännöt](./4-hyvatOhjelmointikaytannot/README.md)
