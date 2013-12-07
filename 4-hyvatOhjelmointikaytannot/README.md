@@ -143,7 +143,7 @@ Funktionaalinen ohjelmointi on paikallaan silloin, kun se ajaa asiansa siististi
 Sulkeumia kannattaa käyttää siellä, missä niistä ei ole nopeuden kannalta haittaa, mutta niistä on muuta hyötyä. Ne lisäävät turvallisuutta piilottamalla tilan ja apufunktiot muiden saavuttamattomiin. 
 Usein luotavilla olioilla sulkeumista voi olla paljonkin haittaa nopeudelle. Vaarana näiden kanssa on myös sykliset riippuvuudet DOMin kanssa, joita kaikkien JavaScript-toteutusten roskienkeruu ei saa poistettua, jolloin tulee muistivuoto.
 
-Sulkeuma on hyvä varsinkin moduuleissa, sillä niitä ei tarvi luoda paljoa ja niiden kanssa turvallisuudella on merkitystäkin. Kertakäyttöiset sulkeumat kannattaa kuitenkin yleensä optimoida pois korvaamalla ne parametrinvälityksellä.
+Sulkeuma on hyvä varsinkin moduuleissa, sillä niitä ei tarvi luoda paljoa ja niiden kanssa turvallisuudella on merkitystäkin. Kertakäyttöiset sulkeumat kannattaa kuitenkin yleensä optimoida pois korvaamalla ne parametrinvälityksellä. Pääsyy sulkeumien hitauteen on se, että niissä tarvittavalle kontekstille joudutaan varaamaan oma olionsa.
 
 Malliesimerkkinämme olkoon viimeviikkoinen testikirjasto, joka on moduuli: a) [typeUtils.js](../1-tyyppiturvallisuus/typeUtils.js) b) [typeUtilsTest.js](../test/type/typeUtilsTest.js)
 
