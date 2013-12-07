@@ -6,13 +6,13 @@ TKTL:n kurssin Ohjelmointitekniikka (JavaScript) laskuharjoitusryhmä Hautala.
 
 ## Jäsenet
 
-* Juho Hautala
+* [Juho Hautala](https://github.com/vastus)
 * [Ville Lahdenvuo](http://tuhoojabotti.com)
 * Lalli Nuorteva
 * Olavi Lintumäki
 
-## Viikko 1: [tyyppiturvallisuuden tavoittelua](./1-tyyppiturvallisuus/typePondering.md)
+## Viikko 1: [tyyppiturvallisuuden tavoittelua](./1-tyyppiturvallisuus/README.md)
 
-## Viikko 2: [käytäntöjä](./2-typesAndConventions/typesAndConventions.md)
+## Viikko 2: [käytäntöjä](./2-typesAndConventions/README.md)
 
-## Viikko 3: [oliot ja periytyminen](./3-oliotJaPeriytyminen/oliotJaPeriytyminen.md)
+## Viikko 3: [oliot ja periytyminen](./3-oliotJaPeriytyminen/README.md)
